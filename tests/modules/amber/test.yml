@@ -1,0 +1,6 @@
+- name: amber
+  command: nextflow run ./tests/modules/amber -entry test_amber -c ./tests/config/nextflow.config -c ./tests/modules/amber/nextflow.config
+  tags:
+    - amber
+  files:
+    # NOTE(SW): TODO

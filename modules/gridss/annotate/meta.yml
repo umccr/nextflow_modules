@@ -1,0 +1,47 @@
+name: "ANNOTATE"
+description: Annotate SVs called by GRIDSS
+keywords:
+  - gridss
+  - annotation
+  - sv
+tools:
+  - "gridss":
+      description: "GRIDSS is a module software suite containing tools useful for the detection of genomic rearrangements."
+      homepage: "https://github.com/PapenfussLab/gridss"
+      documentation: "https://github.com/PapenfussLab/gridss"
+      tool_dev_url: "https://github.com/PapenfussLab/gridss"
+      doi: ""
+      licence: "['GPL >=3']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - gridss_vcf:
+      type: file
+      description: VCF file
+      pattern: "*.{vcf.gz}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - vcf:
+      type: file
+      description: VCF file
+      pattern: "*.{vcf.gz}"
+  - vcf_and_index:
+      type: list
+      description: List of VCF file and VCF index file
+      pattern: "*.{vcf.gz,.vcf.gz.tbi}"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@scwatts"

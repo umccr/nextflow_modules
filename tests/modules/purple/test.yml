@@ -1,0 +1,6 @@
+- name: purple
+  command: nextflow run ./tests/modules/purple -entry test_purple -c ./tests/config/nextflow.config -c ./tests/modules/purple/nextflow.config
+  tags:
+    - purple
+  files:
+    # NOTE(SW): TODO

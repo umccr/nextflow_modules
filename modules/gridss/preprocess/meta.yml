@@ -1,0 +1,50 @@
+name: "PREPROCESS"
+description: Preprocess reads for GRIDSS
+keywords:
+  - gridss
+  - read processing
+  - sv
+tools:
+  - "gridss":
+      description: "GRIDSS is a module software suite containing tools useful for the detection of genomic rearrangements."
+      homepage: "https://github.com/PapenfussLab/gridss"
+      documentation: "https://github.com/PapenfussLab/gridss"
+      tool_dev_url: "https://github.com/PapenfussLab/gridss"
+      doi: ""
+      licence: "['GPL >=3']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - sample_name:
+      type: string
+      description: Sample name
+  - bam:
+      type: file
+      description: BAM file
+      pattern: "*.{bam}"
+  - ref_data_genome_dir:
+      type: directory
+      description: Directory containing reference genome
+  - ref_data_genome_fn:
+      type: string
+      description: Reference genome filename
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  # NOTE(SW): the 'bam' output is set as tuple val(meta), val(sample_name), path("${output_fp}"); the
+  # current meta.yml spec doesn't seem to account for multiple types in an output. Leaving output as partially
+  # defined here for now.
+  - preprocess_dir:
+      type: composite
+      description: Sample name and GRIDSS preprocess output directory
+
+authors:
+  - "@scwatts"

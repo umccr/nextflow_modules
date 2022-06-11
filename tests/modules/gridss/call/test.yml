@@ -1,0 +1,7 @@
+- name: gridss call
+  command: nextflow run ./tests/modules/gridss/call -entry test_call -c ./tests/config/nextflow.config -c ./tests/modules/gridss/call/nextflow.config
+  tags:
+    - gridss/call
+    - gridss
+  files:
+    # NOTE(SW): TODO

@@ -1,0 +1,7 @@
+- name: gridss annotate
+  command: nextflow run ./tests/modules/gridss/annotate -entry test_annotate -c ./tests/config/nextflow.config -c ./tests/modules/gridss/annotate/nextflow.config
+  tags:
+    - gridss/annotate
+    - gridss
+  files:
+    # NOTE(SW): TODO

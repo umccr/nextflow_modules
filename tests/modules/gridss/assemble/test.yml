@@ -1,0 +1,7 @@
+- name: gridss assemble
+  command: nextflow run ./tests/modules/gridss/assemble -entry test_assemble -c ./tests/config/nextflow.config -c ./tests/modules/gridss/assemble/nextflow.config
+  tags:
+    - gridss/assemble
+    - gridss
+  files:
+    # NOTE(SW): TODO

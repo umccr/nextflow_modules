@@ -1,0 +1,6 @@
+- name: cobalt
+  command: nextflow run ./tests/modules/cobalt -entry test_cobalt -c ./tests/config/nextflow.config -c ./tests/modules/cobalt/nextflow.config
+  tags:
+    - cobalt
+  files:
+    # NOTE(SW): TODO

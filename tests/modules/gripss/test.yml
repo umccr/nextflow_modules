@@ -1,0 +1,6 @@
+- name: gripss
+  command: nextflow run ./tests/modules/gripss -entry test_gripss -c ./tests/config/nextflow.config -c ./tests/modules/gripss/nextflow.config
+  tags:
+    - gripss
+  files:
+    # NOTE(SW): TODO

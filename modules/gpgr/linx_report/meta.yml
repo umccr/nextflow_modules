@@ -1,0 +1,46 @@
+name: "LINX_REPORT"
+description: Read and process output files from LINX
+keywords:
+  - gpgr
+  - linx report
+  - sv
+  - cnv
+tools:
+  - "gpgr":
+      description: "Read and process output files from LINX."
+      homepage: "https://github.com/umccr/gpgr"
+      documentation: "https://github.com/umccr/gpgr"
+      tool_dev_url: "https://github.com/umccr/gpgr"
+      doi: ""
+      licence: "['MIT']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - linx_annotation:
+      type: directory
+      description: LINX annotation output directory
+  - linx_visualiser:
+      type: directory
+      description: LINX visualiser output directory
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - html:
+      type: file
+      description: GPGR LINX report file
+      pattern: "*.{html}"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@scwatts"

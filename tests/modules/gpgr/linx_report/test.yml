@@ -1,0 +1,7 @@
+- name: gpgr linx_report
+  command: nextflow run ./tests/modules/gpgr/linx_report -entry test_linx_report -c ./tests/config/nextflow.config -c ./tests/modules/gpgr/linx_report/nextflow.config
+  tags:
+    - gpgr/linx_report
+    - gpgr
+  files:
+    # NOTE(SW): TODO

@@ -1,0 +1,60 @@
+name: "CALL"
+description: Call SVs with GRIDSS
+keywords:
+  - gridss
+  - variant calling
+  - sv
+tools:
+  - "gridss":
+      description: "GRIDSS is a module software suite containing tools useful for the detection of genomic rearrangements."
+      homepage: "https://github.com/PapenfussLab/gridss"
+      documentation: "https://github.com/PapenfussLab/gridss"
+      tool_dev_url: "https://github.com/PapenfussLab/gridss"
+      doi: ""
+      licence: "['GPL >=3']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - tumor_bam:
+      type: file
+      description: BAM file
+      pattern: "*.{bam}"
+  - normal_bam:
+      type: file
+      description: BAM file
+      pattern: "*.{bam}"
+  - gridss_assembled:
+      type: directory
+      description: GRIDSS assemble output directory
+  - ref_data_genome_dir:
+      type: directory
+      description: Directory containing reference genome
+  - ref_data_genome_fn:
+      type: string
+      description: Reference genome filename
+  - blacklist:
+      type: file
+      description: GRIDSS blacklist file
+      pattern: "*.{bed}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - vcf:
+      type: file
+      description: GRIDSS SV VCF file
+      pattern: "*.{vcf.gz}"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@scwatts"

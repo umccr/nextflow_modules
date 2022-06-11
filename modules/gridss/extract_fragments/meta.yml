@@ -1,0 +1,52 @@
+name: "EXTRACT_FRAGMENTS"
+description: Extract reads relevant to previously called SVs using GRIDSS
+keywords:
+  - gridss
+  - read filtering
+  - sv
+tools:
+  - "gridss":
+      description: "GRIDSS is a module software suite containing tools useful for the detection of genomic rearrangements."
+      homepage: "https://github.com/PapenfussLab/gridss"
+      documentation: "https://github.com/PapenfussLab/gridss"
+      tool_dev_url: "https://github.com/PapenfussLab/gridss"
+      doi: ""
+      licence: "['GPL >=3']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - sample_name:
+      type: string
+      description: Sample name
+  - bam:
+      type: file
+      description: BAM file
+      pattern: "*.{bam}"
+  - bai:
+      type: file
+      description: BAI file
+      pattern: "*.{bai}"
+  - manta_vcf:
+      type: file
+      description: Manta SV VCF file
+      pattern: "*.{vcf.gz}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  # NOTE(SW): the 'bam' output is set as tuple val(meta), val(sample_name), path("${output_fp}"); the
+  # current meta.yml spec doesn't seem to account for multiple types in an output. Leaving output as partially
+  # defined here for now.
+  - bam:
+      type: composite
+      description: Sample name and BAM file
+
+authors:
+  - "@scwatts"

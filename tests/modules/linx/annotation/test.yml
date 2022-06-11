@@ -1,0 +1,7 @@
+- name: linx annotation
+  command: nextflow run ./tests/modules/linx/annotation -entry test_annotation -c ./tests/config/nextflow.config -c ./tests/modules/linx/annotation/nextflow.config
+  tags:
+    - linx/annotation
+    - linx
+  files:
+    # NOTE(SW): TODO

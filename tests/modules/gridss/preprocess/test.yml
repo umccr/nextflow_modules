@@ -1,0 +1,7 @@
+- name: gridss preprocess
+  command: nextflow run ./tests/modules/gridss/preprocess -entry test_preprocess -c ./tests/config/nextflow.config -c ./tests/modules/gridss/preprocess/nextflow.config
+  tags:
+    - gridss/preprocess
+    - gridss
+  files:
+    # NOTE(SW): TODO

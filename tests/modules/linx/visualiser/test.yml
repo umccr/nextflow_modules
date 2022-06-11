@@ -1,0 +1,7 @@
+- name: linx visualier
+  command: nextflow run ./tests/modules/linx/visualier -entry test_visualier -c ./tests/config/nextflow.config -c ./tests/modules/linx/visualier/nextflow.config
+  tags:
+    - linx/visualier
+    - linx
+  files:
+    # NOTE(SW): TODO

@@ -1,0 +1,7 @@
+- name: gridss extract_fragments
+  command: nextflow run ./tests/modules/gridss/extract_fragments -entry test_extract_fragments -c ./tests/config/nextflow.config -c ./tests/modules/gridss/extract_fragments/nextflow.config
+  tags:
+    - gridss/extract_fragments
+    - gridss
+  files:
+    # NOTE(SW): TODO

@@ -1,8 +1,6 @@
 process PURPLE {
   conda (params.enable_conda ? "bioconda::hmftools-purple=3.4" : null)
-  container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-    'https://depot.galaxyproject.org/singularity/hmftools-purple:3.4--hdfd78af_0' :
-    'quay.io/biocontainers/hmftools-purple:3.4--hdfd78af_0' }"
+  container 'docker.io/scwatts/purple:3.4'
 
   input:
   tuple val(meta), path(amber), path(cobalt), path(sv_soft_vcf), path(sv_soft_vcf_index), path(sv_hard_vcf), path(sv_hard_vcf_index), val(smlv_tumor_vcf), val(smlv_normal_vcf)
@@ -41,7 +39,7 @@ process PURPLE {
   # Run PURPLE
   java \
     -Xmx${task.memory.giga}g \
-    -jar "${task.jarPath}" \
+    -jar "${task.ext.jarPath}" \
       -tumor "${meta.get(['sample_name', 'tumor'])}" \
       -reference "${meta.get(['sample_name', 'normal'])}" \
       -sv_recovery_vcf "${sv_soft_vcf}" \

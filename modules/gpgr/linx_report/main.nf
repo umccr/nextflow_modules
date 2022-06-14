@@ -1,6 +1,6 @@
 process LINX_REPORT {
-  conda (params.enable_conda ? "umccr::r-gpgr==1.2.5" : null)
-  container 'docker.io/scwatts/gpr:1.2.5'
+  conda (params.enable_conda ? "umccr::r-gpgr==1.3.0" : null)
+  container 'ghcr.io/umccr/gpgr:1.3.0'
 
   input:
   tuple val(meta), path(linx_annotation), path(linx_visualiser)
@@ -18,14 +18,12 @@ process LINX_REPORT {
     --sample ${meta.get(['sample_name', 'tumor'])} \
     --plot ${linx_visualiser}/ \
     --table ${linx_annotation}/ \
-    --out ${sample_name}_linx.html;
+    --out ${meta.get(['sample_name', 'tumor'])}_linx.html;
 
-  # NOTE(SW): hard coded since there is no reliable way to obtain version information. Requested
-  # feature from PD
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":
       R: \$(R --version | head -n1 | sed 's/^R version \\([0-9.]\\+\\).\\+/\\1/')
-      gpgr: 1.2.5
+      gpgr: \$(gpgr.R --version | cut -f2 -d' ')
   END_VERSIONS
   """
 

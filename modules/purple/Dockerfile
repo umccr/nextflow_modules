@@ -12,8 +12,8 @@ USER mambauser
 
 RUN \
   micromamba install -y -n base -c bioconda -c conda-forge \
-    'hmftools-amber==3.9' \
-    r-dplyr && \
+    'hmftools-purple==3.4' \
+    bcftools && \
   micromamba clean --all --yes
 
 ENV PATH="/opt/conda/bin:/opt/conda/condabin:${PATH}"

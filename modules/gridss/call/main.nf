@@ -16,15 +16,15 @@ process CALL {
   task.ext.when == null || task.ext.when
 
   script:
-  output_dir = 'gridss_call/'
+  output_dirname = 'gridss_call'
 
   """
   # Create shadow directory with file symlinks of GRIDSS 'working' dir to prevent cache invalidation
   # NOTE: for reasons that elude me, NF doesn't always stage in the workingdir; remove if it is present
   shadow_input_directory() {
     src=\${1}
-    dst="${output_dir}/work/\${src##*/}"
-    for filepath_src in \$(find \${src} ! -type d); do
+    dst="${output_dirname}/"
+    for filepath_src in \$(find -L \${src} ! -type d); do
       # Get destination location for symlink
       filepath_src_rel=\$(sed 's#^'\${src}'/*##' <<< \${filepath_src})
       filepath_dst=\${dst%/}/\${filepath_src_rel}
@@ -40,8 +40,7 @@ process CALL {
       rm "\${src}"
     fi
   }
-  shadow_input_directory ${tumor_preprocess}
-  shadow_input_directory ${normal_preprocess}
+  shadow_input_directory ${gridss_assembled}
 
   # Run
   gridss \
@@ -51,9 +50,9 @@ process CALL {
     --labels "${meta.get(['sample_name', 'normal'])},${meta.get(['sample_name', 'tumor'])}" \
     --reference "${ref_data_genome_dir}/${ref_data_genome_fn}" \
     --blacklist "${blacklist}" \
-    --workingdir "${output_dir}/work/" \
-    --assembly "${output_dir}/sv_assemblies.bam" \
-    --output "${output_dir}/sv_vcf.vcf.gz" \
+    --workingdir "${output_dirname}/work/" \
+    --assembly "${output_dirname}/sv_assemblies.bam" \
+    --output "${output_dirname}/sv_vcf.vcf.gz" \
     --threads "${task.cpus}" \
     "${normal_bam}" \
     "${tumor_bam}"

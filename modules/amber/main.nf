@@ -22,6 +22,7 @@ process AMBER {
       -tumor_bam "${tumor_bam}" \
       -reference "${meta.get(['sample_name', 'normal'])}" \
       -reference_bam "${normal_bam}" \
+      -ref_genome_version 38 \
       -output_dir amber/ \
       -threads "${task.cpus}" \
       -loci "${loci}"

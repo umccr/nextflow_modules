@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl = 2
 
-include { PREPROCESS } from '../../../modules/gridss/preprocess/main.nf'
+include { PREPROCESS } from '../../../../modules/gridss/preprocess/main.nf'
 
 workflow test_preprocess {
   // Set up inputs
@@ -12,12 +12,12 @@ workflow test_preprocess {
     ],
     'TEST_sample_name',
     file(
-      'PLACEHOLDER_bam_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
       checkIfExists: true
     ),
   ]
-  genome_dir = file('PLACEHOLDER_genome_dir', checkIfExists: true)
-  genome_fn = 'PLACEHOLDER_genome_fn'
+  genome_dir = file('/Users/stephen/projects/gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_fn = 'hg38.fa'
 
   // Run module
   PREPROCESS(

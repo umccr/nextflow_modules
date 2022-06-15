@@ -11,23 +11,23 @@ workflow test_cobalt {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      'PLACEHOLDER_tumor_bam_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_normal_bam_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_tumor_bai_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_normal_bai_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam.bai',
       checkIfExists: true
     ),
   ]
-  cobalt_gc_profile = file('PLACEHOLDER_cobalt_gc_profile', checkIfExists: true)
+  cobalt_gc_profile = file('/Users/stephen/projects/gpl_reference_data/Cobalt/38/GC_profile.1000bp.38.cnp', checkIfExists: true)
 
   // Run module
   COBALT(

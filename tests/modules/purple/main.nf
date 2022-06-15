@@ -3,52 +3,49 @@ nextflow.enable.dsl = 2
 
 include { PURPLE } from '../../../modules/purple/main.nf'
 
-workflow test_gripss {
+workflow test_purple {
   // Set up inputs
   ch_input = [
     [
-      ['sample_name', 'tumor']: 'TEST_sample_tumor',
-      ['sample_name', 'normal']: 'TEST_sample_normal',
+      ['sample_name', 'tumor']: 'SEQC-II_Tumor_50pc',
+      ['sample_name', 'normal']: 'SEQC-II_Normal',
     ],
     file(
-      'PLACEHOLDER_amber_dir',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/amber/',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_cobalt_dir',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/cobalt/',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_sv_soft_vcf_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_sv_soft_vcf_index_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz.tbi',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_sv_hard_vcf_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_sv_hard_vcf_index_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz.tbi',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_smlv_tumor_vcf',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/small_variants/SEQC-II-50pc-ensemble-annotated.vcf.gz',
       checkIfExists: true
     ),
-    file(
-      'PLACEHOLDER_smlv_normal_vcf',
-      checkIfExists: true
-    ),
+    null  // Normal sample small variants VCF file
   ]
-  genome_dir = file('PLACEHOLDER_genome_dir', checkIfExists: true)
-  genome_fn = 'PLACEHOLDER_genome_fn'
-  cobalt_gc_profile = file('PLACEHOLDER_cobalt_gc_profile', checkIfExists: true)
-  hmf_known_hotspots = file('PLACEHOLDER_hmf_known_hotspots', checkIfExists: true)
-  hmf_driver_gene_panel = file('PLACEHOLDER_hmf_driver_gene_panel', checkIfExists: true)
-  hmf_ensembl_data_dir = file('PLACEHOLDER_ensembl_data_dir', checkIfExists: true)
+  genome_dir = file('/Users/stephen/projects/gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_fn = 'hg38.fa'
+  cobalt_gc_profile = file('/Users/stephen/projects/gpl_reference_data/Cobalt/38/GC_profile.1000bp.38.cnp', checkIfExists: true)
+  hmf_known_hotspots = file('/Users/stephen/projects/gpl_reference_data/Sage/38/KnownHotspots.somatic.38.vcf.gz', checkIfExists: true)
+  hmf_driver_gene_panel = file('/Users/stephen/projects/gpl_reference_data/Gene-Panel/38/DriverGenePanel.38.tsv', checkIfExists: true)
+  hmf_ensembl_data_dir = file('/Users/stephen/projects/gpl_reference_data/Ensembl-Data-Cache/38', checkIfExists: true)
 
   // Run module
   PURPLE(

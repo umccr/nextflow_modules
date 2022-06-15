@@ -4,4 +4,7 @@
     - gpgr/linx_report
     - gpgr
   files:
-    # NOTE(SW): TODO
+    - path: output/linx/
+    - path: output/linx/SEQC-II_Tumor_50pc_linx.html
+    - path: output/linx/versions.yml
+      md5sum: 2b62b1ffc049e3b48fc8fd0df4acc190

@@ -7,19 +7,19 @@ workflow test_gripss {
   // Set up inputs
   ch_input = [
     [
-      ['sample_name', 'tumor']: 'TEST_sample_tumor',
-      ['sample_name', 'normal']: 'TEST_sample_normal',
+      ['sample_name', 'tumor']: 'SEQC-II_Tumor_50pc',
+      ['sample_name', 'normal']: 'SEQC-II_Normal',
     ],
     file(
-      'PLACEHOLDER_gridss_vcf_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/gridss_annotate/sv_vcf.annotated.vcf.gz',
       checkIfExists: true
     ),
   ]
-  genome_dir = file('PLACEHOLDER_genome_dir', checkIfExists: true)
-  genome_fn = 'PLACEHOLDER_genome_fn'
-  gridss_breakend_pon = file('PLACEHOLDER_gridss_breakend_pon', checkIfExists: true)
-  gridss_breakpoint_pon = file('PLACEHOLDER_gridss_breakpoint_pon', checkIfExists: true)
-  gridss_known_fusions = file('PLACEHOLDER_gridss_known_fusions', checkIfExists: true)
+  genome_dir = file('/Users/stephen/projects/gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_fn = 'hg38.fa'
+  gridss_breakend_pon = file('/Users/stephen/projects/gpl_reference_data/GRIDSS/38/gridss_pon_single_breakend.38.bed', checkIfExists: true)
+  gridss_breakpoint_pon = file('/Users/stephen/projects/gpl_reference_data/GRIDSS/38/gridss_pon_breakpoint.38.bedpe', checkIfExists: true)
+  gridss_known_fusions = file('/Users/stephen/projects/gpl_reference_data/Known-Fusions/38/known_fusions.38.bedpe', checkIfExists: true)
 
   // Run module
   GRIPSS(

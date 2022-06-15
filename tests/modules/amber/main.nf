@@ -11,23 +11,23 @@ workflow test_amber {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      'PLACEHOLDER_tumor_bam_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_normal_bam_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_tumor_bai_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_normal_bai_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam.bai',
       checkIfExists: true
     ),
   ]
-  amber_loci = file('PLACEHOLDER_amber_loci', checkIfExists: true)
+  amber_loci = file('/Users/stephen/projects/gpl_reference_data/Amber/38/GermlineHetPon.38.vcf.gz', checkIfExists: true)
 
   // Run module
   AMBER(

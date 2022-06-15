@@ -4,4 +4,8 @@
     - linx/annotation
     - linx
   files:
-    # NOTE(SW): TODO
+    - path: output/annotation/
+    - path: output/annotation/linx_annotation/
+    - path: output/annotation/linx_annotation/linx.version
+    - path: output/annotation/versions.yml
+      md5sum: d03045ea7f1f9ff7caa3526bde914339

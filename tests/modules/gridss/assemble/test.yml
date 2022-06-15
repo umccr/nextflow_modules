@@ -4,4 +4,8 @@
     - gridss/assemble
     - gridss
   files:
-    # NOTE(SW): TODO
+    - path: output/assemble/
+    - path: output/assemble/gridss_assemble/sv_assemblies.bam
+    - path: output/assemble/gridss_assemble/work/sv_assemblies.bam.gridss.working/
+    - path: output/assemble/versions.yml
+      md5sum: d68f083d9cfcb3c2533749f5e3fdfe0b

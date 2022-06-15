@@ -4,4 +4,8 @@
     - gridss/extract_fragments
     - gridss
   files:
-    # NOTE(SW): TODO
+    - path: output/extract/
+    - path: output/extract/gridss_extract_fragments/
+    - path: output/extract/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam
+    - path: output/extract/versions.yml
+      md5sum: a6c8abfac81bf846c3853b8af000149b

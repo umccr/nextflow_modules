@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl = 2
 
-include { EXTRACT_FRAGMENTS } from '../../../modules/gridss/extract_fragments/main.nf'
+include { EXTRACT_FRAGMENTS } from '../../../../modules/gridss/extract_fragments/main.nf'
 
 workflow test_extract_fragments {
   // Set up inputs
@@ -12,15 +12,15 @@ workflow test_extract_fragments {
     ],
     'TEST_sample_name',
     file(
-      'PLACEHOLDER_bam_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_bai_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
       checkIfExists: true
     ),
     file(
-      'PLACEHOLDER_manta_vcf_file',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/structural_variants/SEQC-II-50pc-manta.vcf.gz',
       checkIfExists: true
     ),
   ]

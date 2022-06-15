@@ -3,4 +3,9 @@
   tags:
     - purple
   files:
-    # NOTE(SW): TODO
+    - path: output/purple/
+    - path: output/purple/purple/
+    - path: output/purple/purple/purple.version
+    - path: output/purple/purple/circos/
+    - path: output/purple/versions.yml
+      md5sum: 3279f58526a3a4b04d4707628b2af666

@@ -1,0 +1,47 @@
+cobalt:
+  - modules/cobalt/**
+  - tests/modules/cobalt/**
+
+gripss:
+  - modules/gripss/**
+  - tests/modules/gripss/**
+
+linx/annotation:
+  - modules/linx/annotation/**
+  - tests/modules/linx/annotation/**
+
+linx/visualiser:
+  - modules/linx/visualiser/**
+  - tests/modules/linx/visualiser/**
+
+amber:
+  - modules/amber/**
+  - tests/modules/amber/**
+
+gpgr/linx_report:
+  - modules/gpgr/linx_report/**
+  - tests/modules/gpgr/linx_report/**
+
+purple:
+  - modules/purple/**
+  - tests/modules/purple/**
+
+gridss/assemble:
+  - modules/gridss/assemble/**
+  - tests/modules/gridss/assemble/**
+
+gridss/preprocess:
+  - modules/gridss/preprocess/**
+  - tests/modules/gridss/preprocess/**
+
+gridss/annotate:
+  - modules/gridss/annotate/**
+  - tests/modules/gridss/annotate/**
+
+gridss/call:
+  - modules/gridss/call/**
+  - tests/modules/gridss/call/**
+
+gridss/extract_fragments:
+  - modules/gridss/extract_fragments/**
+  - tests/modules/gridss/extract_fragments/**

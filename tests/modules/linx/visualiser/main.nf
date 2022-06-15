@@ -1,21 +1,21 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl = 2
 
-include { VISUALISER } from '../../../modules/linx/visualiser/main.nf'
+include { VISUALISER } from '../../../../modules/linx/visualiser/main.nf'
 
 workflow test_visualiser {
   // Set up inputs
   ch_input = [
     [
-      ['sample_name', 'tumor']: 'TEST_sample_tumor',
+      ['sample_name', 'tumor']: 'SEQC-II_Tumor_50pc',
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      'PLACEHOLDER_linx_dir',
+      '/Users/stephen/repos/nextflow_testdata/hmftools/linx_annotation',
       checkIfExists: true
     ),
   ]
-  hmf_ensembl_data_dir = file('PLACEHOLDER_hmf_ensembl_data_dir', checkIfExists: true)
+  hmf_ensembl_data_dir = file('/Users/stephen/projects/gpl_reference_data/Ensembl-Data-Cache/38/', checkIfExists: true)
 
   // Run module
   VISUALISER(

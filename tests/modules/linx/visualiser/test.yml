@@ -1,7 +1,14 @@
-- name: linx visualier
-  command: nextflow run ./tests/modules/linx/visualier -entry test_visualier -c ./tests/config/nextflow.config -c ./tests/modules/linx/visualier/nextflow.config
+- name: linx visualiser
+  command: nextflow run ./tests/modules/linx/visualiser -entry test_visualiser -c ./tests/config/nextflow.config -c ./tests/modules/linx/visualiser/nextflow.config
   tags:
-    - linx/visualier
+    - linx/visualiser
     - linx
   files:
-    # NOTE(SW): TODO
+    - path: output/visualiser/
+    - path: output/visualiser/linx_visualiser/
+    - path: output/visualiser/linx_visualiser/plot/SEQC-II_Tumor_50pc.chr10.005.png
+    - path: output/visualiser/linx_visualiser/plot/SEQC-II_Tumor_50pc.chr17.005.png
+    - path: output/visualiser/linx_visualiser/plot/SEQC-II_Tumor_50pc.cluster0.DUP.sv2.005.png
+    - path: output/visualiser/linx_visualiser/plot/SEQC-II_Tumor_50pc.cluster1.DEL.sv1.003.png
+    - path: output/visualiser/versions.yml
+      md5sum: 20d05c7d041889c586ec0bf5a16cc835

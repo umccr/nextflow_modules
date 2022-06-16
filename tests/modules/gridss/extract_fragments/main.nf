@@ -12,15 +12,15 @@ workflow test_extract_fragments {
     ],
     'TEST_sample_name',
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
       checkIfExists: true
     ),
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
       checkIfExists: true
     ),
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/structural_variants/SEQC-II-50pc-manta.vcf.gz',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/structural_variants/SEQC-II-50pc-manta.vcf.gz',
       checkIfExists: true
     ),
   ]

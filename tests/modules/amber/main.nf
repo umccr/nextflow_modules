@@ -11,23 +11,23 @@ workflow test_amber {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
       checkIfExists: true
     ),
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Normal-ready.bam',
       checkIfExists: true
     ),
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
       checkIfExists: true
     ),
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam.bai',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Normal-ready.bam.bai',
       checkIfExists: true
     ),
   ]
-  amber_loci = file('/Users/stephen/projects/gpl_reference_data/Amber/38/GermlineHetPon.38.vcf.gz', checkIfExists: true)
+  amber_loci = file('./gpl_reference_data/Amber/38/GermlineHetPon.38.vcf.gz', checkIfExists: true)
 
   // Run module
   AMBER(

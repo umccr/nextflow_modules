@@ -11,21 +11,21 @@ workflow test_call {
       ['sample_name', 'normal']: 'SEQC-II_Normal',
     ],
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
       checkIfExists: true
     ),
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Normal-ready.bam',
       checkIfExists: true
     ),
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/gridss_assemble/',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gridss_assemble/',
       checkIfExists: true
     ),
   ]
-  genome_dir = file('/Users/stephen/projects/gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_dir = file('./gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
   genome_fn = 'hg38.fa'
-  gridss_blacklist = file('/Users/stephen/projects/gpl_reference_data/GRIDSS/38/ENCFF356LFX.bed', checkIfExists: true)
+  gridss_blacklist = file('./gpl_reference_data/GRIDSS/38/ENCFF356LFX.bed', checkIfExists: true)
 
   // Run module
   CALL(

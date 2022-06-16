@@ -12,11 +12,11 @@ workflow test_preprocess {
     ],
     'TEST_sample_name',
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
       checkIfExists: true
     ),
   ]
-  genome_dir = file('/Users/stephen/projects/gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_dir = file('./gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
   genome_fn = 'hg38.fa'
 
   // Run module

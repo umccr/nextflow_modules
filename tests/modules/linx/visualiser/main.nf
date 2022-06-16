@@ -11,11 +11,11 @@ workflow test_visualiser {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      '/Users/stephen/repos/nextflow_testdata/hmftools/linx_annotation',
+      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/linx_annotation',
       checkIfExists: true
     ),
   ]
-  hmf_ensembl_data_dir = file('/Users/stephen/projects/gpl_reference_data/Ensembl-Data-Cache/38/', checkIfExists: true)
+  hmf_ensembl_data_dir = file('./gpl_reference_data/Ensembl-Data-Cache/38/', checkIfExists: true)
 
   // Run module
   VISUALISER(

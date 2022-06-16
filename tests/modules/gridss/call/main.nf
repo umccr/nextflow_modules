@@ -23,9 +23,9 @@ workflow test_call {
       checkIfExists: true
     ),
   ]
-  genome_dir = file('./gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_dir = file('./reference_data/genomes/', checkIfExists: true)
   genome_fn = 'hg38.fa'
-  gridss_blacklist = file('./gpl_reference_data/GRIDSS/38/ENCFF356LFX.bed', checkIfExists: true)
+  gridss_blacklist = file('./reference_data/hmftools/gridss/ENCFF356LFX.bed', checkIfExists: true)
 
   // Run module
   CALL(

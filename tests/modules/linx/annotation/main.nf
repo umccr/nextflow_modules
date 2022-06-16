@@ -15,11 +15,11 @@ workflow test_annotation {
       checkIfExists: true
     ),
   ]
-  linx_fragile_sites = file('./gpl_reference_data/Linx/38/fragile_sites_hmf.38.csv', checkIfExists: true)
-  linx_lines = file('./gpl_reference_data/Linx/38/line_elements.38.csv', checkIfExists: true)
-  hmf_ensembl_data_dir = file('./gpl_reference_data/Ensembl-Data-Cache/38/', checkIfExists: true)
-  hmf_known_fusion_data = file('./gpl_reference_data/Known-Fusions/38/known_fusion_data.38.csv', checkIfExists: true)
-  hmf_driver_gene_pan = file('./gpl_reference_data/Gene-Panel/38/DriverGenePanel.38.tsv', checkIfExists: true)
+  linx_fragile_sites = file('./reference_data/hmftools/linx/fragile_sites_hmf.38.csv', checkIfExists: true)
+  linx_lines = file('./reference_data/hmftools/linx/line_elements.38.csv', checkIfExists: true)
+  hmf_ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
+  hmf_known_fusion_data = file('./reference_data/hmftools/known_fusions/known_fusion_data.38.csv', checkIfExists: true)
+  hmf_driver_gene_pan = file('./reference_data/hmftools/gene_panel/DriverGenePanel.38.tsv', checkIfExists: true)
 
   // Run module
   ANNOTATION(

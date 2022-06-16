@@ -27,7 +27,7 @@ workflow test_amber {
       checkIfExists: true
     ),
   ]
-  amber_loci = file('./gpl_reference_data/Amber/38/GermlineHetPon.38.vcf.gz', checkIfExists: true)
+  amber_loci = file('./reference_data/hmftools/amber/GermlineHetPon.38.vcf.gz', checkIfExists: true)
 
   // Run module
   AMBER(

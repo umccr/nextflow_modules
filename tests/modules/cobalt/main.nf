@@ -27,7 +27,7 @@ workflow test_cobalt {
       checkIfExists: true
     ),
   ]
-  cobalt_gc_profile = file('./gpl_reference_data/Cobalt/38/GC_profile.1000bp.38.cnp', checkIfExists: true)
+  cobalt_gc_profile = file('./reference_data/hmftools/cobalt/GC_profile.1000bp.38.cnp', checkIfExists: true)
 
   // Run module
   COBALT(

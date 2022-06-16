@@ -15,11 +15,11 @@ workflow test_gripss {
       checkIfExists: true
     ),
   ]
-  genome_dir = file('./gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_dir = file('./reference_data/genomes/', checkIfExists: true)
   genome_fn = 'hg38.fa'
-  gridss_breakend_pon = file('./gpl_reference_data/GRIDSS/38/gridss_pon_single_breakend.38.bed', checkIfExists: true)
-  gridss_breakpoint_pon = file('./gpl_reference_data/GRIDSS/38/gridss_pon_breakpoint.38.bedpe', checkIfExists: true)
-  gridss_known_fusions = file('./gpl_reference_data/Known-Fusions/38/known_fusions.38.bedpe', checkIfExists: true)
+  gridss_breakend_pon = file('./reference_data/hmftools/gridss/gridss_pon_single_breakend.38.bed', checkIfExists: true)
+  gridss_breakpoint_pon = file('./reference_data/hmftools/gridss/gridss_pon_breakpoint.38.bedpe', checkIfExists: true)
+  gridss_known_fusions = file('./reference_data/hmftools/known_fusions/known_fusions.38.bedpe', checkIfExists: true)
 
   // Run module
   GRIPSS(

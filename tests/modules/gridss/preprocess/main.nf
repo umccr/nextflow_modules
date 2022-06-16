@@ -16,7 +16,7 @@ workflow test_preprocess {
       checkIfExists: true
     ),
   ]
-  genome_dir = file('./gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_dir = file('./reference_data/genomes/', checkIfExists: true)
   genome_fn = 'hg38.fa'
 
   // Run module

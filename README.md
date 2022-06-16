@@ -106,14 +106,21 @@ $ nf-core modules -g scwatts/nextflow_modules -b main install --sha <my_git_comm
 
 Pull GPL reference data:
 ```bash
-git clone https://github.com/umccr/reference_data -b dev && cd reference_data/
-dvc pull reference_data/hmftools/ && cd ../
-ln -s reference_data/hmftools/ gpl_reference_data/
+git clone https://github.com/umccr/reference_data -b dev reference_data_gitrepo/ && cd reference_data_gitrepo/
+dvc pull reference_data/{genomes,hmftools}/ -r storage-s3 && cd ../
+ln -s reference_data_gitrepo/reference_data/ reference_data
 ```
 
 Run tests
+> Paths to data in the `nextflow_testdata` repo only work for files but we need to provide input directories. So
+> currently we must clone the repo locally and adjust paths.
 ```bash
-TMPDIR=~ PROFILE=docker pytest --symlink --kwdof --git-aware --color=yes
+# Prepare test data
+PREFIX=https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/
+sed -i 's#'${PREFIX}'#'$(pwd -P)/nextflow_testdata/'#' $(find tests/modules/ -name main.nf)
+git clone https://github.com/scwatts/nextflow_testdata
+
+TMPDIR=~ PROFILE=docker pytest --symlink --kwdof --color=yes
 ```
 
 ## Run linting

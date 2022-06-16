@@ -15,7 +15,7 @@ workflow test_visualiser {
       checkIfExists: true
     ),
   ]
-  hmf_ensembl_data_dir = file('./gpl_reference_data/Ensembl-Data-Cache/38/', checkIfExists: true)
+  hmf_ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
 
   // Run module
   VISUALISER(

@@ -40,12 +40,12 @@ workflow test_purple {
     ),
     null  // Normal sample small variants VCF file
   ]
-  genome_dir = file('./gpl_reference_data/genome/umccrise_hg38/', checkIfExists: true)
+  genome_dir = file('./reference_data/genomes/', checkIfExists: true)
   genome_fn = 'hg38.fa'
-  cobalt_gc_profile = file('./gpl_reference_data/Cobalt/38/GC_profile.1000bp.38.cnp', checkIfExists: true)
-  hmf_known_hotspots = file('./gpl_reference_data/Sage/38/KnownHotspots.somatic.38.vcf.gz', checkIfExists: true)
-  hmf_driver_gene_panel = file('./gpl_reference_data/Gene-Panel/38/DriverGenePanel.38.tsv', checkIfExists: true)
-  hmf_ensembl_data_dir = file('./gpl_reference_data/Ensembl-Data-Cache/38', checkIfExists: true)
+  cobalt_gc_profile = file('./reference_data/hmftools/cobalt/GC_profile.1000bp.38.cnp', checkIfExists: true)
+  hmf_known_hotspots = file('./reference_data/hmftools/sage/KnownHotspots.somatic.38.vcf.gz', checkIfExists: true)
+  hmf_driver_gene_panel = file('./reference_data/hmftools/gene_panel/DriverGenePanel.38.tsv', checkIfExists: true)
+  hmf_ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
 
   // Run module
   PURPLE(

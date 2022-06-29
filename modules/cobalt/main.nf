@@ -1,5 +1,5 @@
 process COBALT {
-  conda (params.enable_conda ? "bioconda::hmftools-cobalt=1.13" : null)
+  //conda (params.enable_conda ? "bioconda::hmftools-cobalt=1.13" : null)
   container 'docker.io/scwatts/cobalt:1.13'
 
   input:

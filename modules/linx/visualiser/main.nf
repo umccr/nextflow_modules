@@ -1,8 +1,6 @@
 process VISUALISER {
-  conda (params.enable_conda ? "bioconda::hmftools-linx=1.19" : null)
-  container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-    'https://depot.galaxyproject.org/singularity/hmftools-linx:1.19--hdfd78af_0' :
-    'quay.io/biocontainers/hmftools-linx:1.19--hdfd78af_0' }"
+  //conda (params.enable_conda ? "bioconda::hmftools-linx=1.19" : null)
+  container 'quay.io/biocontainers/hmftools-linx:1.19--hdfd78af_0'
 
   input:
   tuple val(meta), path(linx)

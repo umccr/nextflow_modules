@@ -1,4 +1,4 @@
-name: "GRIPSS"
+name: "GRIPSS_germline"
 description: GRIPSS applies a set of filtering and post processing steps on GRIDSS SVs
 keywords:
   - sort

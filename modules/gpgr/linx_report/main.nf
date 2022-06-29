@@ -1,5 +1,5 @@
 process LINX_REPORT {
-  conda (params.enable_conda ? "umccr::r-gpgr==1.3.0" : null)
+  //conda (params.enable_conda ? "umccr::r-gpgr==1.3.0" : null)
   container 'ghcr.io/umccr/gpgr:1.3.0'
 
   input:

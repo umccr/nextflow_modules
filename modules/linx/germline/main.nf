@@ -1,20 +1,17 @@
-process ANNOTATION {
-  conda (params.enable_conda ? "bioconda::hmftools-linx=1.19" : null)
-  container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-    'https://depot.galaxyproject.org/singularity/hmftools-linx:1.19--hdfd78af_0' :
-    'quay.io/biocontainers/hmftools-linx:1.19--hdfd78af_0' }"
+process LINX_GERMLINE {
+  //conda (params.enable_conda ? "bioconda::hmftools-linx=1.19" : null)
+  container 'quay.io/biocontainers/hmftools-linx:1.19--hdfd78af_0'
 
   input:
-  tuple val(meta), path(purple)
+  tuple val(meta), path(purple_sv)
   path(fragile_sites)
   path(line_elements)
   path(ensembl_data_dir)
-  path(known_fusion_data)
   path(driver_gene_panel)
 
   output:
-  tuple val(meta), path('linx_annotation/'), emit: annotation_dir
-  path 'versions.yml'                      , emit: versions
+  tuple val(meta), path('linx_germline/'), emit: annotation_dir
+  path 'versions.yml'                    , emit: versions
 
   when:
   task.ext.when == null || task.ext.when
@@ -24,16 +21,14 @@ process ANNOTATION {
   java \
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
-      -sample "${meta.get(['sample_name', 'tumor'])}" \
+      -sample "${meta.get(['sample_name', 'normal'])}" \
+      -germline \
       -ref_genome_version 38 \
-      -sv_vcf "${purple}/${meta.get(['sample_name', 'tumor'])}.purple.sv.vcf.gz" \
-      -purple_dir "${purple}" \
+      -sv_vcf "${purple_sv}" \
       -output_dir linx_annotation/ \
       -fragile_site_file "${fragile_sites}" \
       -line_element_file "${line_elements}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
-      -check_fusions \
-      -known_fusion_file "${known_fusion_data}" \
       -check_drivers \
       -driver_gene_panel "${driver_gene_panel}"
 

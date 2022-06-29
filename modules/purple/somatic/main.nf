@@ -1,9 +1,9 @@
-process PURPLE {
-  conda (params.enable_conda ? "bioconda::hmftools-purple=3.4" : null)
+process PURPLE_SOMATIC {
+  //conda (params.enable_conda ? "bioconda::hmftools-purple=3.4" : null)
   container 'docker.io/scwatts/purple:3.4'
 
   input:
-  tuple val(meta), path(amber), path(cobalt), path(sv_soft_vcf), path(sv_soft_vcf_index), path(sv_hard_vcf), path(sv_hard_vcf_index), val(smlv_tumor_vcf), val(smlv_normal_vcf)
+  tuple val(meta), path(amber), path(cobalt), path(sv_soft_vcf), path(sv_soft_vcf_index), path(sv_hard_vcf), path(sv_hard_vcf_index), path(smlv_tumor_vcf), path(smlv_normal_vcf)
   path(ref_data_genome_dir)
   val(ref_data_genome_fn)
   path(gc_profile)
@@ -19,22 +19,22 @@ process PURPLE {
   task.ext.when == null || task.ext.when
 
   script:
+  def smlv_tumor_vcf_fp = smlv_tumor_vcf ?: ''
+  def smlv_normal_vcf_fp = smlv_germline_vcf ?: ''
   """
   # For provided smlv VCFs, filter records that do not contain the required FORMAT/AD field and
   # get argument for PURPLE
   get_smlv_arg() {
     fp=\${1}
     fn=\${fp##*/}
-    if [[ "\${fn}" != 'null' ]]; then
+    if [[ "\${fp}" != '' ]]; then
       fp_out="prepared__\${2}__\${fn}"
       bcftools filter -Oz -e 'FORMAT/AD[*]="."' "\${fp}" > \${fp_out}
       echo "-\${2} \${fp_out}"
-    else
-      echo ''
     fi
   }
-  smlv_tumor_vcf_arg=\$(get_smlv_arg ${smlv_tumor_vcf} somatic_vcf)
-  smlv_normal_vcf_arg=\$(get_smlv_arg ${smlv_normal_vcf} germline_vcf)
+  smlv_tumor_vcf_arg=\$(get_smlv_arg ${smlv_tumor_vcf_fp} somatic_vcf)
+  smlv_normal_vcf_arg=\$(get_smlv_arg ${smlv_normal_vcf_fp} germline_vcf)
 
   # Run PURPLE
   java \
@@ -58,6 +58,7 @@ process PURPLE {
       -ref_genome_version 38 \
       -threads "${task.cpus}" \
       -circos "${task.ext.path_circos}"
+
   # PURPLE can fail silently, check that at least the PURPLE SV VCF is created
   if [[ ! -s "purple/${meta.get(['sample_name', 'tumor'])}.purple.sv.vcf.gz" ]]; then
     exit 1;

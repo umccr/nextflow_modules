@@ -1,0 +1,4 @@
+.nextflow*
+*testdata*
+output
+*reference_data*

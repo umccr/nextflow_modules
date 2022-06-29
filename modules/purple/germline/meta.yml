@@ -1,7 +1,12 @@
-name: "PURPLE"
+name: "PURPLE_germline"
 description: PURPLE is a purity ploidy estimator for whole genome sequenced data
 keywords:
-  - sort
+  - purple
+  - variant caller
+  - ploidy
+  - purity
+  - cnv
+  - sv
 tools:
   - "PURPLE":
       description: "PURPLE is a purity ploidy estimator for whole genome sequenced data."

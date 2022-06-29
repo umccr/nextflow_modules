@@ -1,5 +1,5 @@
 process ANNOTATE {
-  conda (params.enable_conda ? "bioconda::gridss=2.13.2" : null)
+  //conda (params.enable_conda ? "bioconda::gridss=2.13.2" : null)
   container 'docker.io/scwatts/gridss:2.13.2'
 
   input:

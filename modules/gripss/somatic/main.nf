@@ -1,8 +1,6 @@
-process GRIPSS {
-  conda (params.enable_conda ? "bioconda::hmftools-gripss=2.1" : null)
-  container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-    'https://depot.galaxyproject.org/singularity/hmftools-gripss:2.1--hdfd78af_0' :
-    'quay.io/biocontainers/hmftools-gripss:2.1--hdfd78af_0' }"
+process GRIPSS_SOMATIC {
+  //conda (params.enable_conda ? "bioconda::hmftools-gripss=2.1" : null)
+  container 'quay.io/biocontainers/hmftools-gripss:2.1--hdfd78af_0'
 
   input:
   tuple val(meta), path(gridss_vcf)

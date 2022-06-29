@@ -1,5 +1,5 @@
 process AMBER {
-  conda (params.enable_conda ? "bioconda::hmftools-amber=3.9" : null)
+  //conda (params.enable_conda ? "bioconda::hmftools-amber=3.9" : null)
   container 'docker.io/scwatts/amber:3.9'
 
   input:

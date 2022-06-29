@@ -1,0 +1,63 @@
+name: "GRIPSS_somatic"
+description: GRIPSS applies a set of filtering and post processing steps on GRIDSS SVs
+keywords:
+  - sort
+tools:
+  - "fastqc":
+      description: "GRIPSS applies a set of filtering and post processing steps on GRIDSS SVs."
+      homepage: "https://github.com/hartwigmedical/hmftools/tree/master/gripss"
+      documentation: "https://github.com/hartwigmedical/hmftools/tree/master/gripss"
+      tool_dev_url: "https://github.com/hartwigmedical/hmftools/tree/master/gripss"
+      doi: ""
+      licence: "['GPL v3']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - gridss_vcf:
+      type: file
+      description: VCF file
+      pattern: "*.{vcf.gz}"
+  - ref_data_genome_dir:
+      type: directory
+      description: Directory containing reference genome
+  - ref_data_genome_fn:
+      type: string
+      description: Reference genome filename
+  - breakend_pon:
+      type: file
+      description: GRIDSS breakend PON file
+      pattern: "*.{bed}"
+  - breakpoint_pon:
+      type: file
+      description: GRIDSS breakpoint PON file
+      pattern: "*.{bedpe}"
+  - known_fusions:
+      type: file
+      description: HMF Known Fusions file
+      pattern: "*.{bedpe}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+  - vcf_hard:
+      type: list
+      description: Hard filtered VCF file and index file
+      pattern: "*.{vcf.gz,vcf.gz.tbi}"
+  - vcf_soft:
+      type: list
+      description: Soft filtered VCF file and index file
+      pattern: "*.{vcf.gz,vcf.gz.tbi}"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@scwatts"

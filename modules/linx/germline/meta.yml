@@ -1,11 +1,9 @@
-name: "VISUALISER"
-description: Visualise LINX somatic annotations
+name: "LINX_germline"
+description: Generate LINX annotation data
 keywords:
   - linx
   - sv
   - annotation
-  - visualisation
-  - somatic
 tools:
   - "LINX":
       description: "LINX is an annotation, interpretation and visualisation tool for structural variants."
@@ -21,12 +19,25 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
-  - linx:
-      type: directory
-      description: LINX somatic annotation output directory
+  - fragile_sites:
+      type: file
+      description: LINX fragile sites file
+      pattern: "*.{csv}"
+  - line_elements:
+      type: file
+      description: LINEs file
+      pattern: "*.{csv}"
   - ensembl_data_dir:
       type: directory
       description: HMF Ensembl Data Cache directory
+  - known_fusion_data:
+      type: file
+      description: HMF Known Fusions Data file
+      pattern: "*.{bedpe}"
+  - driver_gene_panel:
+      type: file
+      description: HMF Driver Gene Panel file
+      pattern: "*.{csv}"
 
 output:
   - meta:
@@ -34,9 +45,9 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
-  - visualiser_dir:
+  - annotation_dir:
       type: directory
-      description: LINX visualiser output directory
+      description: LINX annotation output directory
   - versions:
       type: file
       description: File containing software versions

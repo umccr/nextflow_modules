@@ -1,0 +1,11 @@
+- name: pave somatic
+  command: nextflow run ./tests/modules/pave/somatic -entry test_pave_somatic -c ./tests/config/nextflow.config -c ./tests/modules/pave/somatic/nextflow.config
+  tags:
+    - pave/somatic
+    - pave
+  files:
+    - path: output/pave/
+    - path: output/pave/SEQC-II.sage_somatic.pave.vcf.gz
+    - path: output/pave/SEQC-II.sage_somatic.pave.vcf.gz.tbi
+    - path: output/pave/versions.yml
+      md5sum: 00e4b165c48d09260f3dbfba7415c9cd

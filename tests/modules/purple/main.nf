@@ -11,41 +11,47 @@ workflow test_purple {
       ['sample_name', 'normal']: 'SEQC-II_Normal',
     ],
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/amber/',
+      './nextflow_testdata/hmftools/amber/',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/cobalt/',
+      './nextflow_testdata/hmftools/cobalt/',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz',
+      './nextflow_testdata/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz.tbi',
+      './nextflow_testdata/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz.tbi',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz',
+      './nextflow_testdata/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz.tbi',
+      './nextflow_testdata/hmftools/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz.tbi',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/small_variants/SEQC-II-50pc-ensemble-annotated.vcf.gz',
+      './nextflow_testdata/hmftools/pave/SEQC-II.sage_somatic.pave.vcf.gz',
       checkIfExists: true
     ),
-    null  // Normal sample small variants VCF file
+    file(
+      './nextflow_testdata/hmftools/pave/SEQC-II.sage_germline.pave.vcf.gz',
+      checkIfExists: true
+    ),
+    //[],
+    //[],
   ]
   genome_dir = file('./reference_data/genomes/', checkIfExists: true)
   genome_fn = 'hg38.fa'
   cobalt_gc_profile = file('./reference_data/hmftools/cobalt/GC_profile.1000bp.38.cnp', checkIfExists: true)
-  hmf_known_hotspots = file('./reference_data/hmftools/sage/KnownHotspots.somatic.38.vcf.gz', checkIfExists: true)
-  hmf_driver_gene_panel = file('./reference_data/hmftools/gene_panel/DriverGenePanel.38.tsv', checkIfExists: true)
-  hmf_ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
+  sage_known_hotspots_somatic = file('./reference_data/hmftools/sage/KnownHotspots.somatic.38.vcf.gz', checkIfExists: true)
+  sage_known_hotspots_germline = file('./reference_data/hmftools/sage/KnownHotspots.germline.38.vcf.gz', checkIfExists: true)
+  driver_gene_panel = file('./reference_data/hmftools/gene_panel/DriverGenePanel.38.tsv', checkIfExists: true)
+  ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
 
   // Run module
   PURPLE(
@@ -53,8 +59,9 @@ workflow test_purple {
     genome_dir,
     genome_fn,
     cobalt_gc_profile,
-    hmf_known_hotspots,
-    hmf_driver_gene_panel,
-    hmf_ensembl_data_dir,
+    sage_known_hotspots_somatic,
+    sage_known_hotspots_germline,
+    driver_gene_panel,
+    ensembl_data_dir,
   )
 }

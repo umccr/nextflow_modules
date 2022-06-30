@@ -11,21 +11,23 @@ workflow test_assemble {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
+      './nextflow_testdata/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Normal-ready.bam',
+      './nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gridss_preprocess/SEQC-II_Tumor_50pc-ready.targeted.bam.gridss.working',
+      './nextflow_testdata/hmftools/gridss_preprocess/SEQC-II_Tumor_50pc-ready.targeted.bam.gridss.working',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gridss_preprocess/SEQC-II_Normal-ready.bam.gridss.working',
+      './nextflow_testdata/hmftools/gridss_preprocess/SEQC-II_Normal-ready.bam.gridss.working',
       checkIfExists: true
     ),
+    ['TEST_sample_tumor'],
+    ['TEST_sample_normal'],
   ]
   genome_dir = file('./reference_data/genomes/', checkIfExists: true)
   genome_fn = 'hg38.fa'

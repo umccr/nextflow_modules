@@ -1,7 +1,8 @@
 name: "LINX_germline"
-description: Generate LINX annotation data
+description: Generate LINX germline annotation data
 keywords:
   - linx
+  - germline
   - sv
   - annotation
 tools:

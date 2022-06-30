@@ -4,8 +4,8 @@ process PREPROCESS {
 
   input:
   tuple val(meta), val(sample_name), path(bam)
-  path(ref_data_genome_dir)
-  val(ref_data_genome_fn)
+  path ref_data_genome_dir
+  val ref_data_genome_fn
 
   output:
   tuple val(meta), val(sample_name), path("gridss_preprocess/${bam.name}.gridss.working/"), emit: preprocess_dir
@@ -15,8 +15,11 @@ process PREPROCESS {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
+
   """
   gridss \
+    ${args} \
     --jvmheap "${task.memory.giga}g" \
     --jar "${task.ext.jarPath}" \
     --steps preprocess \

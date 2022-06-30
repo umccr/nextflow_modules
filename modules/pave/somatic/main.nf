@@ -4,12 +4,12 @@ process PAVE_SOMATIC {
 
   input:
   tuple val(meta), path(sage_vcf)
-  path(ref_data_genome_dir)
-  val(ref_data_genome_fn)
-  path(ensembl_data_dir)
-  path(driver_gene_panel)
-  path(mappability_bed)
-  path(sage_pon_file)
+  path ref_data_genome_dir
+  val ref_data_genome_fn
+  path ensembl_data_dir
+  path driver_gene_panel
+  path mappability_bed
+  path sage_pon_file
 
   output:
   tuple val(meta), path("*.pave.vcf.gz")    , emit: vcf
@@ -20,7 +20,9 @@ process PAVE_SOMATIC {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
   def pon_filters = "HOTSPOT:5:5;PANEL:2:5;UNKNOWN:2:0"
+
   """
   java \
     -Xmx${task.memory.giga}g \
@@ -35,7 +37,7 @@ process PAVE_SOMATIC {
       -mappability_bed "${mappability_bed}" \
       -vcf_file "${sage_vcf}" \
       -read_pass_only \
-      -output_dir pave/
+      -output_dir ./
 
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
@@ -46,7 +48,7 @@ process PAVE_SOMATIC {
 
   stub:
   """
-  mkdir -p pave/
+  touch ${meta.get(['sample_name', 'tumor'])}.sage.pave.vcf.gz{,.tbi}
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

@@ -4,7 +4,7 @@ process VISUALISER {
 
   input:
   tuple val(meta), path(linx)
-  path(ensembl_data_dir)
+  path ensembl_data_dir
 
   output:
   tuple val(meta), path('linx_visualiser/plot/'), emit: visualiser_dir
@@ -14,11 +14,14 @@ process VISUALISER {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
+
   """
   java \
     -Xmx${task.memory.giga}g \
     -cp "${task.ext.jarPath}" \
     com.hartwig.hmftools.linx.visualiser.SvVisualiser \
+      ${args} \
       -sample "${meta.get(['sample_name', 'tumor'])}" \
       -ref_genome_version 38 \
       -ensembl_data_dir "${ensembl_data_dir}" \

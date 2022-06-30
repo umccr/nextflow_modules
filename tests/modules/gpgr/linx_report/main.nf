@@ -11,11 +11,11 @@ workflow test_linx_report {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/linx_annotation',
+      './nextflow_testdata/hmftools/linx_annotation/',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/linx_visualiser/plot',
+      './nextflow_testdata/hmftools/linx_visualiser/plot',
       checkIfExists: true
     ),
   ]

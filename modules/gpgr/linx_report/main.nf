@@ -13,8 +13,11 @@ process LINX_REPORT {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
+
   """
   gpgr.R linx \
+    ${args} \
     --sample ${meta.get(['sample_name', 'tumor'])} \
     --plot ${linx_visualiser}/ \
     --table ${linx_annotation}/ \

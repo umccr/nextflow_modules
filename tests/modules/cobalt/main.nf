@@ -11,19 +11,19 @@ workflow test_cobalt {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
+      './nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Normal-ready.bam',
+      './nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
+      './nextflow_testdata/hmftools/read_sets/SEQC-II_Tumor_50pc-ready.bam.bai',
       checkIfExists: true
     ),
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/read_sets/SEQC-II_Normal-ready.bam.bai',
+      './nextflow_testdata/hmftools/read_sets/SEQC-II_Normal-ready.bam.bai',
       checkIfExists: true
     ),
   ]

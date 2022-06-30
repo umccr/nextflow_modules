@@ -1,15 +1,16 @@
-process PURPLE_SOMATIC {
+process PURPLE {
   //conda (params.enable_conda ? "bioconda::hmftools-purple=3.4" : null)
   container 'docker.io/scwatts/purple:3.4'
 
   input:
   tuple val(meta), path(amber), path(cobalt), path(sv_soft_vcf), path(sv_soft_vcf_index), path(sv_hard_vcf), path(sv_hard_vcf_index), path(smlv_tumor_vcf), path(smlv_normal_vcf)
-  path(ref_data_genome_dir)
-  val(ref_data_genome_fn)
-  path(gc_profile)
-  path(known_hotspots)
-  path(driver_gene_panel)
-  path(ensembl_data_dir)
+  path ref_data_genome_dir
+  val ref_data_genome_fn
+  path gc_profile
+  path sage_known_hotspots_somatic
+  path sage_known_hotspots_germline
+  path driver_gene_panel
+  path ensembl_data_dir
 
   output:
   tuple val(meta), path('purple/'), emit: purple_dir
@@ -19,8 +20,10 @@ process PURPLE_SOMATIC {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
   def smlv_tumor_vcf_fp = smlv_tumor_vcf ?: ''
-  def smlv_normal_vcf_fp = smlv_germline_vcf ?: ''
+  def smlv_normal_vcf_fp = smlv_normal_vcf ?: ''
+
   """
   # For provided smlv VCFs, filter records that do not contain the required FORMAT/AD field and
   # get argument for PURPLE
@@ -33,13 +36,14 @@ process PURPLE_SOMATIC {
       echo "-\${2} \${fp_out}"
     fi
   }
-  smlv_tumor_vcf_arg=\$(get_smlv_arg ${smlv_tumor_vcf_fp} somatic_vcf)
-  smlv_normal_vcf_arg=\$(get_smlv_arg ${smlv_normal_vcf_fp} germline_vcf)
+  smlv_tumor_vcf_arg=\$(get_smlv_arg "${smlv_tumor_vcf_fp}" somatic_vcf)
+  smlv_normal_vcf_arg=\$(get_smlv_arg "${smlv_normal_vcf_fp}" germline_vcf)
 
   # Run PURPLE
   java \
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
+      ${args} \
       -tumor "${meta.get(['sample_name', 'tumor'])}" \
       -reference "${meta.get(['sample_name', 'normal'])}" \
       -sv_recovery_vcf "${sv_soft_vcf}" \
@@ -53,7 +57,8 @@ process PURPLE_SOMATIC {
       -run_drivers \
       -driver_gene_panel "${driver_gene_panel}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
-      -somatic_hotspots "${known_hotspots}" \
+      -somatic_hotspots "${sage_known_hotspots_somatic}" \
+      -germline_hotspots "${sage_known_hotspots_germline}" \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
       -ref_genome_version 38 \
       -threads "${task.cpus}" \

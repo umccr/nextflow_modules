@@ -1,7 +1,8 @@
 name: "LINX_somatic"
-description: Generate LINX annotation data
+description: Generate LINX somatic annotation data
 keywords:
   - linx
+  - somatic
   - sv
   - annotation
 tools:

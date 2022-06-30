@@ -1,0 +1,11 @@
+- name: pave germline
+  command: nextflow run ./tests/modules/pave/germline -entry test_pave_germline -c ./tests/config/nextflow.config -c ./tests/modules/pave/germline/nextflow.config
+  tags:
+    - pave/germline
+    - pave
+  files:
+    - path: output/pave/
+    - path: output/pave/SEQC-II.sage_germline.pave.vcf.gz
+    - path: output/pave/SEQC-II.sage_germline.pave.vcf.gz.tbi
+    - path: output/pave/versions.yml
+      md5sum: 3037d3c3770337d6f4b75a69e04b8f15

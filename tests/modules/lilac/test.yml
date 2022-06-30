@@ -1,0 +1,10 @@
+- name: lilac
+  command: nextflow run ./tests/modules/lilac -entry test_lilac -c ./tests/config/nextflow.config -c ./tests/modules/lilac/nextflow.config
+  tags:
+    - lilac
+  files:
+    - path: output/lilac/
+    - path: output/lilac/lilac/*.lilac.csv
+    - path: output/lilac/lilac/*.lilac.qc.csv
+    - path: output/lilac/versions.yml
+      md5sum: cd18309c76560a9e4e3df7e54fece8ed

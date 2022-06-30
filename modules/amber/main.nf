@@ -4,7 +4,7 @@ process AMBER {
 
   input:
   tuple val(meta), path(tumor_bam), path(normal_bam), path(tumor_bai), path(normal_bai)
-  path(loci)
+  path loci
 
   output:
   tuple val(meta), path('amber/'), emit: amber_dir
@@ -14,10 +14,13 @@ process AMBER {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
+
   """
   java \
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
+      ${args} \
       -tumor "${meta.get(['sample_name', 'tumor'])}" \
       -tumor_bam "${tumor_bam}" \
       -reference "${meta.get(['sample_name', 'normal'])}" \

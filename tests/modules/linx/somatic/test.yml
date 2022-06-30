@@ -1,0 +1,11 @@
+- name: linx somatic
+  command: nextflow run ./tests/modules/linx/somatic -entry test_linx_somatic -c ./tests/config/nextflow.config -c ./tests/modules/linx/somatic/nextflow.config
+  tags:
+    - linx/somatic
+    - linx
+  files:
+    - path: output/linx/
+    - path: output/linx/linx_somatic/
+    - path: output/linx/linx_somatic/linx.version
+    - path: output/linx/versions.yml
+      md5sum: 52c7e98198abdd463770fd4864f7dcb9

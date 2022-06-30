@@ -4,10 +4,10 @@ process LINX_GERMLINE {
 
   input:
   tuple val(meta), path(purple_sv)
-  path(fragile_sites)
-  path(line_elements)
-  path(ensembl_data_dir)
-  path(driver_gene_panel)
+  path fragile_sites
+  path line_elements
+  path ensembl_data_dir
+  path driver_gene_panel
 
   output:
   tuple val(meta), path('linx_germline/'), emit: annotation_dir
@@ -17,20 +17,23 @@ process LINX_GERMLINE {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
+
   """
   java \
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
+      ${args} \
       -sample "${meta.get(['sample_name', 'normal'])}" \
       -germline \
       -ref_genome_version 38 \
       -sv_vcf "${purple_sv}" \
-      -output_dir linx_annotation/ \
       -fragile_site_file "${fragile_sites}" \
       -line_element_file "${line_elements}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
       -check_drivers \
-      -driver_gene_panel "${driver_gene_panel}"
+      -driver_gene_panel "${driver_gene_panel}" \
+      -output_dir linx_germline/
 
   # NOTE(SW): hard coded since there is no reliable way to obtain version information
   cat <<-END_VERSIONS > versions.yml

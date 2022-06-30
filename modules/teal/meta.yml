@@ -1,10 +1,11 @@
 name: "TEAL"
-description:
+description: TEAL measures telomere content, and estimates telomeric length based on WGS read data
 keywords:
   - teal
+  - telomere
 tools:
   - "TEAL":
-      description: "."
+      description: "TEAL measures telomere content, and estimates telomeric length based on WGS read data."
       homepage: "https://github.com/hartwigmedical/hmftools/tree/master/teal"
       documentation: "https://github.com/hartwigmedical/hmftools/tree/master/teal"
       tool_dev_url: "https://github.com/hartwigmedical/hmftools/tree/master/teal"

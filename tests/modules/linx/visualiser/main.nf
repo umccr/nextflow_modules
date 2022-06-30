@@ -11,7 +11,7 @@ workflow test_visualiser {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/linx_annotation',
+      './nextflow_testdata/hmftools/linx_annotation',
       checkIfExists: true
     ),
   ]

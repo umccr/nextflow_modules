@@ -4,9 +4,9 @@ process CALL {
 
   input:
   tuple val(meta), path(tumor_bams), path(normal_bams), path(gridss_assembled), val(tumor_labels), val(normal_labels)
-  path(ref_data_genome_dir)
-  val(ref_data_genome_fn)
-  path(blacklist)
+  path ref_data_genome_dir
+  val ref_data_genome_fn
+  path blacklist
 
   output:
   tuple val(meta), path('gridss_call/sv_vcf.vcf.gz'), emit: vcf
@@ -16,12 +16,14 @@ process CALL {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
   def output_dirname = 'gridss_call'
   def labels_arg = [*normal_labels, *tumor_labels].join(',')
   // NOTE(SW): Nextflow implicitly casts List<TaskPath> to an atomic TaskPath, hence the required check below
   def normal_bams_list = normal_bams instanceof List ?: [normal_bams]
   def tumor_bams_list = tumor_bams instanceof List ?: [tumor_bams]
   def bams_arg = [*normal_bams_list, *tumor_bams_list].join(' ')
+
   """
   # Create shadow directory with file symlinks of GRIDSS 'working' dir to prevent cache invalidation
   # NOTE: for reasons that elude me, NF doesn't always stage in the workingdir; remove if it is present
@@ -48,6 +50,7 @@ process CALL {
 
   # Run
   gridss \
+    ${args} \
     --jvmheap "${task.memory.giga}g" \
     --jar "${task.ext.jarPath}" \
     --steps call \

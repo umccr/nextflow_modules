@@ -1,6 +1,7 @@
-- name: gripss
-  command: nextflow run ./tests/modules/gripss -entry test_gripss -c ./tests/config/nextflow.config -c ./tests/modules/gripss/nextflow.config
+- name: gripss somatic
+  command: nextflow run ./tests/modules/gripss/somatic -entry test_gripss_somatic -c ./tests/config/nextflow.config -c ./tests/modules/gripss/somatic/nextflow.config
   tags:
+    - gripss/somatic
     - gripss
   files:
     - path: output/gripss/

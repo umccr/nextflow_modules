@@ -2,10 +2,10 @@ name: "VISUALISER"
 description: Visualise LINX somatic annotations
 keywords:
   - linx
+  - somatic
   - sv
   - annotation
   - visualisation
-  - somatic
 tools:
   - "LINX":
       description: "LINX is an annotation, interpretation and visualisation tool for structural variants."

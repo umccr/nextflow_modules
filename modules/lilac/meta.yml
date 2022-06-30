@@ -1,10 +1,10 @@
 name: "LILAC"
-description:
+description: LILAC is a WGS tool for HLA typing and somatic CNV and SNV calling
 keywords:
   - lilac
 tools:
   - "LILAC":
-      description: "."
+      description: "LILAC is a WGS tool for HLA typing and somatic CNV and SNV calling."
       homepage: "https://github.com/hartwigmedical/hmftools/tree/master/lilac"
       documentation: "https://github.com/hartwigmedical/hmftools/tree/master/lilac"
       tool_dev_url: "https://github.com/hartwigmedical/hmftools/tree/master/lilac"

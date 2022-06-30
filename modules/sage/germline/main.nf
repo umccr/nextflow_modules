@@ -4,12 +4,12 @@ process SAGE_GERMLINE {
 
   input:
   tuple val(meta), path(tumor_bam), path(normal_bam)
-  path(ref_data_genome_dir)
-  val(ref_data_genome_fn)
-  path(known_hotspots)
-  path(sage_coding_panel)
-  path(sage_high_confidence)
-  path(ensembl_data_dir)
+  path ref_data_genome_dir
+  val ref_data_genome_fn
+  path sage_known_hotspots_germline
+  path sage_coding_panel_germline
+  path sage_high_confidence
+  path ensembl_data_dir
 
   output:
   tuple val(meta), path("${meta.subject_name}.sage.vcf.gz"), emit: vcf
@@ -19,19 +19,21 @@ process SAGE_GERMLINE {
   task.ext.when == null || task.ext.when
 
   script:
-  // NOTE(SW): the tumor and normal BAMs are purposefully swapped for germline mode
+  def args = task.ext.args ?: ''
+
   """
   java \
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
+      ${args} \
       -reference "${meta.get(['sample_name', 'tumor'])}" \
       -reference_bam "${tumor_bam}" \
       -tumor "${meta.get(['sample_name', 'normal'])}" \
       -tumor_bam "${normal_bam}" \
       -ref_genome_version 38 \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
-      -hotspots "${known_hotspots}" \
-      -panel_bed "${sage_coding_panel}" \
+      -hotspots "${sage_known_hotspots_germline}" \
+      -panel_bed "${sage_coding_panel_germline}" \
       -high_confidence_bed "${sage_high_confidence}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
       -hotspot_min_tumor_qual 50 \

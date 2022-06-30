@@ -1,0 +1,10 @@
+- name: sage germline
+  command: nextflow run ./tests/modules/sage/germline -entry test_sage_germline -c ./tests/config/nextflow.config -c ./tests/modules/sage/germline/nextflow.config
+  tags:
+    - sage/germline
+    - sage
+  files:
+    - path: output/sage/
+    - path: output/sage/SEQC-II.sage.vcf.gz
+    - path: output/sage/versions.yml
+      md5sum: df7bbbda0647d72bfc648c8c1743a531

@@ -13,10 +13,13 @@ process EXTRACT_FRAGMENTS {
   task.ext.when == null || task.ext.when
 
   script:
-  output_fp = "gridss_extract_fragments/${bam.getSimpleName()}.targeted.bam"
+  def args = task.ext.args ?: ''
+  def output_fp = "gridss_extract_fragments/${bam.getSimpleName()}.targeted.bam"
+
   """
   # Run
   gridss_extract_overlapping_fragments \
+    ${args} \
     --jar "${task.ext.jarPath}" \
     --targetvcf "${manta_vcf}" \
     --workingdir gridss_extract_fragments/work/ \

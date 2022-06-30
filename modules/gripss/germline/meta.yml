@@ -1,7 +1,9 @@
 name: "GRIPSS_germline"
 description: GRIPSS applies a set of filtering and post processing steps on GRIDSS SVs
 keywords:
-  - sort
+  - gripss
+  - sv filtering
+  - germline
 tools:
   - "fastqc":
       description: "GRIPSS applies a set of filtering and post processing steps on GRIDSS SVs."

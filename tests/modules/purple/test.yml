@@ -5,6 +5,9 @@
   files:
     - path: output/purple/
     - path: output/purple/purple/
+    - path: output/purple/purple/SEQC-II_Tumor_50pc.purple.germline.vcf.gz
+    - path: output/purple/purple/SEQC-II_Tumor_50pc.purple.somatic.vcf.gz
+    - path: output/purple/purple/SEQC-II_Tumor_50pc.purple.sv.vcf.gz
     - path: output/purple/purple/purple.version
     - path: output/purple/purple/circos/
     - path: output/purple/versions.yml

@@ -1,0 +1,10 @@
+- name: teal
+  command: nextflow run ./tests/modules/teal -entry test_teal -c ./tests/config/nextflow.config -c ./tests/modules/teal/nextflow.config
+  tags:
+    - teal
+  files:
+    - path: output/teal/
+    - path: output/teal/teal/SEQC-II_Normal.teal.telbam.bam
+    - path: output/teal/teal/SEQC-II_Tumor_50pc.teal.telbam.bam
+    - path: output/teal/versions.yml
+      md5sum: 83bef4fdd8d49100f1edf629f6f0bff3

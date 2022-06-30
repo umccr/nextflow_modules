@@ -1,0 +1,11 @@
+- name: linx germline
+  command: nextflow run ./tests/modules/linx/germline -entry test_linx_germline -c ./tests/config/nextflow.config -c ./tests/modules/linx/germline/nextflow.config
+  tags:
+    - linx/germline
+    - linx
+  files:
+    - path: output/linx/
+    - path: output/linx/linx_germline/
+    - path: output/linx/linx_germline/linx.version
+    - path: output/linx/versions.yml
+      md5sum: d744548878874f3e02b52afe6c48ee60

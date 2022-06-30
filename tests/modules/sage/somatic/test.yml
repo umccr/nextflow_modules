@@ -1,0 +1,10 @@
+- name: sage somatic
+  command: nextflow run ./tests/modules/sage/somatic -entry test_sage_somatic -c ./tests/config/nextflow.config -c ./tests/modules/sage/somatic/nextflow.config
+  tags:
+    - sage/somatic
+    - sage
+  files:
+    - path: output/sage/
+    - path: output/sage/SEQC-II.sage.vcf.gz
+    - path: output/sage/versions.yml
+      md5sum: ad9e1d5d5d56a99502aaea36c13c470d

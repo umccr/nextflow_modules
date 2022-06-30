@@ -4,14 +4,14 @@ process PAVE_GERMLINE {
 
   input:
   tuple val(meta), path(sage_vcf)
-  path(ref_data_genome_dir)
-  val(ref_data_genome_fn)
-  path(ensembl_data_dir)
-  path(driver_gene_panel)
-  path(mappability_bed)
-  path(clinvar_vcf)
-  path(sage_blacklist_bed)
-  path(sage_blacklist_vcf)
+  path ref_data_genome_dir
+  val ref_data_genome_fn
+  path ensembl_data_dir
+  path driver_gene_panel
+  path mappability_bed
+  path clinvar_vcf
+  path sage_blacklist_bed
+  path sage_blacklist_vcf
 
   output:
   tuple val(meta), path("*.pave.vcf.gz")    , emit: vcf
@@ -22,11 +22,13 @@ process PAVE_GERMLINE {
   task.ext.when == null || task.ext.when
 
   script:
-  def pon_filters = "HOTSPOT:5:5;PANEL:2:5;UNKNOWN:2:0"
+  def args = task.ext.args ?: ''
+
   """
   java \
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
+      ${args} \
       -sample "${meta.get(['sample_name', 'tumor'])}" \
       -ref_genome_version 38 \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
@@ -38,7 +40,7 @@ process PAVE_GERMLINE {
       -mappability_bed "${mappability_bed}" \
       -vcf_file "${sage_vcf}" \
       -read_pass_only \
-      -output_dir pave/
+      -output_dir ./
 
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
@@ -49,7 +51,7 @@ process PAVE_GERMLINE {
 
   stub:
   """
-  mkdir -p pave/
+  touch ${meta.get(['sample_name', 'tumor'])}.sage.pave.vcf.gz{,.tbi}
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

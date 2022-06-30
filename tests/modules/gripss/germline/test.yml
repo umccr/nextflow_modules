@@ -1,0 +1,13 @@
+- name: gripss germline
+  command: nextflow run ./tests/modules/gripss/germline -entry test_gripss_germline -c ./tests/config/nextflow.config -c ./tests/modules/gripss/germline/nextflow.config
+  tags:
+    - gripss/germline
+    - gripss
+  files:
+    - path: output/gripss/
+    - path: output/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz
+    - path: output/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz.tbi
+    - path: output/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz
+    - path: output/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz.tbi
+    - path: output/gripss/versions.yml
+      md5sum: 17bd6b047d66730bc41fb6cfe23c05ad

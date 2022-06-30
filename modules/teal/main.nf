@@ -13,22 +13,25 @@ process TEAL {
   task.ext.when == null || task.ext.when
 
   script:
-  def tumor_args = normal_bam ?: """
+  def args = task.ext.args ?: ''
+  def tumor_args = normal_bam ? """
     -tumor ${meta.get(['sample_name', 'tumor'])} \
     -tumor_bam ${tumor_bam} \
     -tumor_wgs_metrics ${tumor_wgs_metrics} \
-  """
-  def reference_args = normal_bam ?: """
+  """ : ''
+  def reference_args = normal_bam ? """
     -reference ${meta.get(['sample_name', 'normal'])} \
     -reference_bam ${normal_bam} \
     -reference_wgs_metrics ${normal_wgs_metrics} \
-  """
+  """ : ''
+
   """
   java \
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
-      ${tumor_args} \
-      ${reference_args} \
+      ${args} \
+      ${tumor_args.replaceAll('\n', '')} \
+      ${reference_args.replaceAll('\n', '')} \
       -cobalt "${cobalt_dir}" \
       -purple "${purple_dir}" \
       -threads "${task.cpus}" \

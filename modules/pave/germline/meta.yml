@@ -1,10 +1,15 @@
 name: "PAVE_germline"
-description:
+description: PAVE annotates a somatic variant VCF with gene and transcript coding and protein effects
 keywords:
   - pave
+  - annotation
+  - gene
+  - transcript
+  - protein
+  - vcf
 tools:
   - "PAVE":
-      description: "."
+      description: "PAVE annotates a somatic variant VCF with gene and transcript coding and protein effects."
       homepage: "https://github.com/hartwigmedical/hmftools/tree/master/pave"
       documentation: "https://github.com/hartwigmedical/hmftools/tree/master/pave"
       tool_dev_url: "https://github.com/hartwigmedical/hmftools/tree/master/pave"

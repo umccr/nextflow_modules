@@ -11,7 +11,7 @@ workflow test_annotate {
       ['sample_name', 'normal']: 'TEST_sample_normal',
     ],
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gridss_call/sv_vcf.vcf.gz',
+      './nextflow_testdata/hmftools/gridss_call/sv_vcf.vcf.gz',
       checkIfExists: true
     ),
   ]

@@ -12,7 +12,7 @@ workflow test_preprocess {
     ],
     'TEST_sample_name',
     file(
-      'https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
+      './nextflow_testdata/hmftools/gridss_extract_fragments/SEQC-II_Tumor_50pc-ready.targeted.bam',
       checkIfExists: true
     ),
   ]

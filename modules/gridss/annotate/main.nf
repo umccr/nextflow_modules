@@ -14,8 +14,11 @@ process ANNOTATE {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
+
   """
   gridss_annotate_vcf_repeatmasker \
+    ${args} \
     --jar "${task.ext.jarPath}" \
     --output gridss_annotate/sv_vcf.annotated.vcf.gz \
     --workingdir gridss_annotate/work/ \

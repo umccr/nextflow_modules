@@ -4,11 +4,11 @@ process GRIPSS_SOMATIC {
 
   input:
   tuple val(meta), path(gridss_vcf)
-  path(ref_data_genome_dir)
-  val(ref_data_genome_fn)
-  path(breakend_pon)
-  path(breakpoint_pon)
-  path(known_fusions)
+  path ref_data_genome_dir
+  val ref_data_genome_fn
+  path breakend_pon
+  path breakpoint_pon
+  path known_fusions
 
   output:
   tuple val(meta), path('*.gripss.filtered.vcf.gz'), path('*.gripss.filtered.vcf.gz.tbi'), emit: vcf_hard
@@ -19,10 +19,13 @@ process GRIPSS_SOMATIC {
   task.ext.when == null || task.ext.when
 
   script:
+  def args = task.ext.args ?: ''
+
   """
   java \
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
+      ${args} \
       -sample "${meta.get(['sample_name', 'tumor'])}" \
       -reference "${meta.get(['sample_name', 'normal'])}" \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \

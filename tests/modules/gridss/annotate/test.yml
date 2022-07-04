@@ -5,6 +5,7 @@
     - gridss
   files:
     - path: output/annotate/
-    - path: output/annotate/gridss_annotate/sv_vcf.annotated.vcf.gz
+    - path: output/annotate/gridss_annotate/TEST_subject.gridss.annotated.vcf.gz
+    - path: output/annotate/gridss_annotate/TEST_subject.gridss.annotated.vcf.gz.tbi
     - path: output/annotate/versions.yml
       md5sum: 96672e684563e931d22499c7fdbb1cbb

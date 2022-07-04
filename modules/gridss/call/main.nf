@@ -3,7 +3,8 @@ process CALL {
   container 'docker.io/scwatts/gridss:2.13.2'
 
   input:
-  tuple val(meta), path(tumor_bams), path(normal_bams), path(gridss_assembled), val(tumor_labels), val(normal_labels)
+  tuple val(meta), path(bams), path(gridss_assembled), val(labels)
+  path gridss_config
   path ref_data_genome_dir
   val ref_data_genome_fn
   path blacklist
@@ -17,12 +18,12 @@ process CALL {
 
   script:
   def args = task.ext.args ?: ''
+  def config_arg = gridss_config ? "--configuration ${gridss_config}" : ''
   def output_dirname = 'gridss_call'
-  def labels_arg = [*normal_labels, *tumor_labels].join(',')
+  def labels_arg = labels.join(',')
   // NOTE(SW): Nextflow implicitly casts List<TaskPath> to an atomic TaskPath, hence the required check below
-  def normal_bams_list = normal_bams instanceof List ?: [normal_bams]
-  def tumor_bams_list = tumor_bams instanceof List ?: [tumor_bams]
-  def bams_arg = [*normal_bams_list, *tumor_bams_list].join(' ')
+  def bams_list = bams instanceof List ? bams : [bams]
+  def bams_arg = bams_list.join(' ')
 
   """
   # Create shadow directory with file symlinks of GRIDSS 'working' dir to prevent cache invalidation
@@ -61,7 +62,8 @@ process CALL {
     --assembly "${output_dirname}/sv_assemblies.bam" \
     --output "${output_dirname}/sv_vcf.vcf.gz" \
     --threads "${task.cpus}" \
-    "${bams_arg}"
+    ${config_arg} \
+    ${bams_arg}
 
   # NOTE(SW): hard coded since there is no reliable way to obtain version information, see GH issue
   # https://github.com/PapenfussLab/gridss/issues/586

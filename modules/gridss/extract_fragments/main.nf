@@ -3,25 +3,26 @@ process EXTRACT_FRAGMENTS {
   container 'docker.io/scwatts/gridss:2.13.2'
 
   input:
-  tuple val(meta), val(sample_name), path(bam), path(bai), path(manta_vcf)
+  tuple val(meta), path(bam), path(bai), path(sv_vcf)
 
   output:
-  tuple val(meta), val(sample_name), path("${output_fp}"), emit: bam
-  path 'versions.yml'                                    , emit: versions
+  tuple val(meta), path("${output_fp}"), emit: bam
+  path 'versions.yml'                  , emit: versions
 
   when:
   task.ext.when == null || task.ext.when
 
   script:
   def args = task.ext.args ?: ''
-  def output_fp = "gridss_extract_fragments/${bam.getSimpleName()}.targeted.bam"
+  // NOTE(SW): use of global scoping for output_fp to allow access in the output directive above
+  output_fp = "gridss_extract_fragments/${bam.getSimpleName()}.targeted.bam"
 
   """
   # Run
   gridss_extract_overlapping_fragments \
     ${args} \
     --jar "${task.ext.jarPath}" \
-    --targetvcf "${manta_vcf}" \
+    --targetvcf "${sv_vcf}" \
     --workingdir gridss_extract_fragments/work/ \
     --output "${output_fp}" \
     --threads "${task.cpus}" \
@@ -41,6 +42,7 @@ process EXTRACT_FRAGMENTS {
 
   stub:
   output_fp = "gridss_extract_fragments/${bam.getSimpleName()}.targeted.bam"
+
   """
   mkdir -p gridss_extract_fragments/
   touch "${output_fp}"

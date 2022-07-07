@@ -17,14 +17,33 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [id: 'sample_id']
+  - bam:
+      type: file
+      description: BAM file
+      pattern: "*.{bam}"
+  - bai:
+      type: file
+      description: BAI file
+      pattern: "*.{bai}"
+  - bed:
+      type: file
+      description: Optional slice regions BED file
+      pattern: "*.{bed}"
+  - regions:
+      type: list
+      description: Optional list of regions strings to slice
 
 output:
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [id: 'sample_id']
+  - bam:
+      type: file
+      description: Sliced BAM file
+      pattern: "*.{bam}"
   - versions:
       type: file
       description: File containing software versions

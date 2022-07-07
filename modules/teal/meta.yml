@@ -17,14 +17,37 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [['sample_name', 'tumor']: 'sample_tumor', ['sample_name', 'normal']: 'sample_normal']
+  - tumor_bam:
+      type: file
+      description: Optional tumor BAM file
+      pattern: "*.{bam}"
+  - normal_bam:
+      type: file
+      description: Optional normal BAM file
+      pattern: "*.{bam}"
+  - tumor_wgs_metrics:
+      type: file
+      description: Optional tumor WGS metrics file
+  - normal_wgs_metrics:
+      type: file
+      description: Optional normal WGS metrics file
+  - cobalt_dir:
+      type: directory
+      description: COBALT output directory
+  - purple_dir:
+      type: directory
+      description: PURPLE output directory
 
 output:
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [['sample_name', 'tumor']: 'sample_tumor', ['sample_name', 'normal']: 'sample_normal']
+  - teal_dir:
+      type: directory
+      description: TEAL output directory
   - versions:
       type: file
       description: File containing software versions

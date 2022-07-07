@@ -3,7 +3,7 @@ process CALL {
   container 'docker.io/scwatts/gridss:2.13.2'
 
   input:
-  tuple val(meta), path(bams), path(gridss_assembled), val(labels)
+  tuple val(meta), path(bams), path(assemble_dir), val(labels)
   path gridss_config
   path ref_data_genome_dir
   val ref_data_genome_fn
@@ -47,7 +47,7 @@ process CALL {
       rm "\${src}"
     fi
   }
-  shadow_input_directory ${gridss_assembled}
+  shadow_input_directory ${assemble_dir}
 
   # Run
   gridss \

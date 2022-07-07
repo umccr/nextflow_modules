@@ -20,15 +20,57 @@ input:
   - meta:
       type: map
       description: |
-        Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        Groovy Map containing sample informatio
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample_tumor', ['sample_name', 'normal']: 'sample_normal']
+  - tumor_bam:
+      type: file
+      description: Tumor BAM file
+      pattern: "*.{bam}"
+  - normal_bam:
+      type: file
+      description: Normal BAM file
+      pattern: "*.{bam}"
+  - tumor_bai:
+      type: file
+      description: Tumor BAI file
+      pattern: "*.{bai}"
+  - normal_bai:
+      type: file
+      description: Normal BAI file
+      pattern: "*.{bai}"
+  - ref_data_genome_dir:
+      type: directory
+      description: Directory containing reference genome
+  - ref_data_genome_fn:
+      type: string
+      description: Reference genome filename
+  - sage_known_hotspots_somatic:
+      type: file
+      description: SAGE somatic Known Hotspots file
+      pattern: "*.{vcf.gz}"
+  - sage_coding_panel_somatic:
+      type: file
+      description: SAGE somatic Coding Panel file
+      pattern: "*.{bed.gz}"
+  - sage_high_confidence:
+      type: file
+      description: SAGE High Confidence file
+      pattern: "*.{bed.gz}"
+  - ensembl_data_dir:
+      type: directory
+      description: HMF Ensembl Data Cache directory
+      pattern: "*.{tsv}"
 
 output:
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample_tumor', ['sample_name', 'normal']: 'sample_normal']
+  - vcf:
+      type: file
+      description: SAGE VCF file
+      pattern: "*.{vcf.gz}"
   - versions:
       type: file
       description: File containing software versions

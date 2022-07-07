@@ -21,21 +21,13 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [['sample_name', 'tumor']: 'sample_tumor', ['sample_name', 'normal']: 'sample_normal']
   - amber:
       type: directory
       description: AMBER output directory
   - cobalt:
       type: directory
       description: COBALT output directory
-  - sv_soft_vcf:
-      type: file
-      description: GRIPSS soft filtered VCF file
-      pattern: "*.{vcf.gz}"
-  - sv_soft_vcf_index:
-      type: file
-      description: GRIPSS soft filtered VCF index file
-      pattern: "*.{vcf.gz.tbi}"
   - sv_hard_vcf:
       type: file
       description: GRIPSS hard filtered VCF file
@@ -44,13 +36,21 @@ input:
       type: file
       description: GRIPSS hard filtered VCF index file
       pattern: "*.{vcf.gz.tbi}"
+  - sv_soft_vcf:
+      type: file
+      description: GRIPSS soft filtered VCF file
+      pattern: "*.{vcf.gz}"
+  - sv_soft_vcf_index:
+      type: file
+      description: GRIPSS soft filtered VCF index file
+      pattern: "*.{vcf.gz.tbi}"
   - smlv_tumor_vcf:
       type: file
-      description: Input small variant tumor VCF file
+      description: Optional small variant tumor VCF file
       pattern: "*.{vcf.gz}"
   - smlv_normal_vcf:
       type: file
-      description: Input small variant normal VCF file
+      description: Optional small variant normal VCF file
       pattern: "*.{vcf.gz}"
   - ref_data_genome_dir:
       type: directory
@@ -62,9 +62,13 @@ input:
       type: file
       description: COBALT GC Profile file
       pattern: "*.{cnp}"
-  - known_hotspots:
+  - sage_known_hotspots_somatic:
       type: file
-      description: HMF Known Hotspots file
+      description: SAGE somatic Known Hotspots file
+      pattern: "*.{vcf.gz}"
+  - sage_known_hotspots_germline:
+      type: file
+      description: SAGE germline Known Hotspots file
       pattern: "*.{vcf.gz}"
   - driver_gene_panel:
       type: file
@@ -80,7 +84,7 @@ output:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [['sample_name', 'tumor']: 'sample_tumor', ['sample_name', 'normal']: 'sample_normal']
   - purple_dir:
       type: directory
       description: PURPLE output directory

@@ -18,21 +18,20 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
-  - tumor_bam:
-      type: file
-      description: BAM file
+        e.g. [id: 'sample_id']
+  - bams:
+      type: list
+      description: List of BAM files
       pattern: "*.{bam}"
-  - normal_bam:
+  - preprocess_dirs:
+      type: list
+      description: List of GRIDSS preprocess output directories
+  - labels:
+      type: list
+      description: List of labels corresponding to BAMs and GRIDSS preprocess output directories
+  - gridss_config:
       type: file
-      description: BAM file
-      pattern: "*.{bam}"
-  - tumor_preprocess:
-      type: directory
-      description: GRIDSS preprocess output directory (tumor)
-  - normal_preprocess:
-      type: directory
-      description: GRIDSS preprocess output directory (normal)
+      description: Optional GRIDSS configuration file
   - ref_data_genome_dir:
       type: directory
       description: Directory containing reference genome
@@ -49,7 +48,7 @@ output:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [id: 'sample_id']
   - assembly_dir:
       type: directory
       description: GRIDSS assemble output directory

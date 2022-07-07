@@ -21,14 +21,48 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [['sample_name', 'tumor']: 'sample_tumor']
+  - sage_vcf:
+      type: file
+      description: SAGE VCF
+      pattern: "*.{vcf.gz}"
+  - ref_data_genome_dir:
+      type: directory
+      description: Directory containing reference genome
+  - ref_data_genome_fn:
+      type: string
+      description: Reference genome filename
+  - sage_pon_file:
+      type: file
+      description: SAGE PON file
+      pattern: "*.{vcf.gz}"
+  - mappability_bed:
+      type: file
+      description: HMF mappability BED
+      pattern: "*.{bed}"
+  - driver_gene_panel:
+      type: file
+      description: HMF Driver Gene Panel file
+      pattern: "*.{tsv}"
+  - ensembl_data_dir:
+      type: directory
+      description: HMF Ensembl Data Cache directory
+      pattern: "*.{tsv}"
 
 output:
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [['sample_name', 'tumor']: 'sample_tumor']
+  - vcf:
+      type: file
+      description: PAVE VCF file
+      pattern: "*.{vcf.gz}"
+  - index:
+      type: file
+      description: PAVE VCF index file
+      pattern: "*.{vcf.gz.tbi}"
   - versions:
       type: file
       description: File containing software versions

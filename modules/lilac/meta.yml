@@ -16,14 +16,45 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [['sample_name', 'tumor']: 'sample_tumor', [['sample_name', 'normal']]: 'sample_normal']
+  - tumor_bam:
+      type: file
+      description: Optional tumor BAM file
+      pattern: "*.{bam}"
+  - normal_bam:
+      type: file
+      description: Optional normal BAM file
+      pattern: "*.{bam}"
+  - tumor_bai:
+      type: file
+      description: Optional tumor BAI file
+      pattern: "*.{bai}"
+  - normal_bai:
+      type: file
+      description: Optional normal BAI file
+      pattern: "*.{bai}"
+  - purple_dir:
+      type: directory
+      description: Optional PURPLE output directory
+  - ref_data_genome_dir:
+      type: directory
+      description: Directory containing reference genome
+  - ref_data_genome_fn:
+      type: string
+      description: Reference genome filename
+  - lilac_resource_dir:
+      type: directory
+      description: LILAC resource directory
 
 output:
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. [['sample_name', 'tumor']: 'sample_tumor', [['sample_name', 'normal']]: 'sample_normal']
+  - lilac_dir:
+      type: file
+      description: LILAC output directory
   - versions:
       type: file
       description: File containing software versions

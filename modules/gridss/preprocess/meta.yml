@@ -18,14 +18,14 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
-  - sample_name:
-      type: string
-      description: Sample name
+        e.g. [id: 'sample_id']
   - bam:
       type: file
       description: BAM file
       pattern: "*.{bam}"
+  - gridss_config:
+      type: file
+      description: Optional GRIDSS configuration file
   - ref_data_genome_dir:
       type: directory
       description: Directory containing reference genome
@@ -38,13 +38,10 @@ output:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
-  # NOTE(SW): the 'bam' output is set as tuple val(meta), val(sample_name), path("${output_fp}"); the
-  # current meta.yml spec doesn't seem to account for multiple types in an output. Leaving output as partially
-  # defined here for now.
+        e.g. [id: 'sample_id']
   - preprocess_dir:
-      type: composite
-      description: Sample name and GRIDSS preprocess output directory
+      type: directory
+      description: GRIDSS preprocess output directory
 
 authors:
   - "@scwatts"

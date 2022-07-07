@@ -24,7 +24,7 @@ input:
       type: file
       description: LINX fragile sites file
       pattern: "*.{csv}"
-  - line_elements:
+  - lines:
       type: file
       description: LINEs file
       pattern: "*.{csv}"

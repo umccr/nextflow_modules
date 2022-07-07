@@ -5,7 +5,7 @@ process LINX_GERMLINE {
   input:
   tuple val(meta), path(gripss_sv)
   path fragile_sites
-  path line_elements
+  path lines
   path ensembl_data_dir
   path driver_gene_panel
 
@@ -29,7 +29,7 @@ process LINX_GERMLINE {
       -ref_genome_version 38 \
       -sv_vcf "${gripss_sv}" \
       -fragile_site_file "${fragile_sites}" \
-      -line_element_file "${line_elements}" \
+      -line_element_file "${lines}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
       -check_drivers \
       -driver_gene_panel "${driver_gene_panel}" \

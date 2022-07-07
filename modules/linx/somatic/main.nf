@@ -5,7 +5,7 @@ process LINX_SOMATIC {
   input:
   tuple val(meta), path(purple_dir)
   path fragile_sites
-  path line_elements
+  path lines
   path ensembl_data_dir
   path known_fusion_data
   path driver_gene_panel
@@ -30,7 +30,7 @@ process LINX_SOMATIC {
       -sv_vcf "${purple_dir}/${meta.get(['sample_name', 'tumor'])}.purple.sv.vcf.gz" \
       -purple_dir "${purple_dir}" \
       -fragile_site_file "${fragile_sites}" \
-      -line_element_file "${line_elements}" \
+      -line_element_file "${lines}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
       -check_fusions \
       -known_fusion_file "${known_fusion_data}" \

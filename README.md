@@ -39,10 +39,19 @@ $ nf-core modules -g scwatts/nextflow_modules -b main list remote
 │ gridss/call              │
 │ gridss/extract_fragments │
 │ gridss/preprocess        │
-│ gripss                   │
-│ linx/annotation          │
+│ gripss/germline          │
+│ gripss/somatic           │
+│ lilac                    │
+│ linx/germline            │
+│ linx/somatic             │
 │ linx/visualiser          │
+│ pave/germline            │
+│ pave/somatic             │
 │ purple                   │
+│ sage/germline            │
+│ sage/somatic             │
+│ sambamba/slice           │
+│ teal                     │
 └──────────────────────────┘
 ```
 

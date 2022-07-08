@@ -7,9 +7,9 @@ The structure of this repository and individual modules are modelled after
 
 UMCCR Nextflow infrastructure is organised across several locations:
 
-1. [Pipelines](https://github.com/scwatts/nextflow_pipelines)
-1. [Modules](https://github.com/scwatts/nextflow_modules)
-1. [Test data](https://github.com/scwatts/nextflow_testdata)
+1. [Pipelines](https://github.com/umccr/nextflow_pipelines)
+1. [Modules](https://github.com/umccr/nextflow_modules)
+1. [Test data](https://github.com/umccr/nextflow_testdata)
 1. [Reference data](https://github.com/umccr/reference_data/tree/dev)
 1. [AWS infrastructure](https://github.com/umccr/infrastructure/tree/master/cdk/apps/nextflow) (_proposed work_)
 1. [ICA infrastructure](https://github.com/umccr/icav2_nextflow_deployer) (_proposed concept_)
@@ -26,7 +26,7 @@ UMCCR Nextflow infrastructure is organised across several locations:
 List available modules:
 
 ```text
-$ nf-core modules -g scwatts/nextflow_modules -b main list remote
+$ nf-core modules -g umccr/nextflow_modules -b main list remote
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Module Name              ┃
@@ -58,7 +58,7 @@ $ nf-core modules -g scwatts/nextflow_modules -b main list remote
 Retrieve information for specific module:
 
 ```text
-$ nf-core modules -g scwatts/nextflow_modules -b main info amber
+$ nf-core modules -g umccr/nextflow_modules -b main info amber
 
 ╭─ Module: amber  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ Location: ./modules/amber                                                                                                                                                  │
@@ -90,19 +90,19 @@ $ nf-core modules -g scwatts/nextflow_modules -b main info amber
   versions  (file)      │File containing software versions                                                                                                      │versions.yml
                         ╵                                                                                                                                       ╵
 
- 💻  Installation command: nf-core modules --github-repository scwatts/nextflow_modules install amber
+ 💻  Installation command: nf-core modules --github-repository umccr/nextflow_modules install amber
 ```
 
 Install a specific module:
 
 ```text
-$ nf-core modules -g scwatts/nextflow_modules -b main install amber
+$ nf-core modules -g umccr/nextflow_modules -b main install amber
 ```
 
 Install a specific module version/commit:
 
 ```text
-$ nf-core modules -g scwatts/nextflow_modules -b main install --sha <my_git_commit_sha> amber
+$ nf-core modules -g umccr/nextflow_modules -b main install --sha <my_git_commit_sha> amber
 ```
 
 ## Run tests
@@ -119,14 +119,15 @@ ln -s reference_data_gitrepo/reference_data/ reference_data
 ```
 
 Run tests
-> Paths to data in the `nextflow_testdata` repo only work for files but we need to provide input directories. So
-> currently we must clone the repo locally and adjust paths.
-```bash
-# Prepare test data
-PREFIX=https://raw.githubusercontent.com/scwatts/nextflow_testdata/main/
-sed -i 's#'${PREFIX}'#'$(pwd -P)/nextflow_testdata/'#' $(find tests/modules/ -name main.nf)
-git clone https://github.com/scwatts/nextflow_testdata
+> Typically we would use directory URLs to test data hosted on umccr/nextflow_testdata but this only works for files and
+> not directories. Many of the tests run required input directories hence we manually stage the test data by cloning the
+> umccr/nextflow_testdata manually.
 
+> It is assumed `nextflow`, `docker`, and `pytest` have been installed.
+
+```bash
+# Stage test data then run tests
+git clone https://github.com/umccr/nextflow_testdata
 TMPDIR=~ PROFILE=docker pytest --symlink --kwdof --color=yes
 ```
 

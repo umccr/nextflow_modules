@@ -62,7 +62,7 @@ process PURPLE {
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
       -ref_genome_version 38 \
       -threads "${task.cpus}" \
-      -circos "${task.ext.path_circos}"
+      -circos "${task.ext.circosPath}"
 
   # PURPLE can fail silently, check that at least the PURPLE SV VCF is created
   if [[ ! -s "purple/${meta.get(['sample_name', 'tumor'])}.purple.sv.vcf.gz" ]]; then

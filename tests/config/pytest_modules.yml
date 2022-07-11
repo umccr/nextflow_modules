@@ -6,6 +6,10 @@ cobalt:
   - modules/cobalt/**
   - tests/modules/cobalt/**
 
+custom/refdata_dvc_pull:
+  - modules/custom/refdata_dvc_pull/**
+  - tests/custom/refdata_dvc_pull/**
+
 gpgr/linx_report:
   - modules/gpgr/linx_report/**
   - tests/modules/gpgr/linx_report/**

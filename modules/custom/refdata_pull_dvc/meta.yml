@@ -1,0 +1,38 @@
+name: "REFDATA_DVC_PULL"
+description: Custom module used to pull UMCCR reference data
+keywords:
+  - umccr
+  - reference data
+  - dvc
+  - git
+tools:
+  - "custom":
+      description: "Custom module used to pull UMCCR reference data."
+      homepage: "https://github.com/scwatts/nextflow_modules"
+      documentation: "https://github.com/scwatts/nextflow_modules"
+      tool_dev_url: "https://github.com/scwatts/nextflow_modules"
+      doi: ""
+      licence: "['GPL v3']"
+
+input:
+  - git_url:
+      type: string
+      description: Git URL containing DVC repo
+  - dvc_remote:
+      type: string
+      description: Name of DVC remote
+  - file_paths:
+      type: list
+      description: List of file paths to pull from DVC remote
+
+output:
+  - refdata_dir:
+      type: directory
+      description: Reference data directory
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@scwatts"

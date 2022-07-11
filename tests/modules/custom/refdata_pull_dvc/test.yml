@@ -1,0 +1,9 @@
+- name: refdata_pull_dvc
+  command: nextflow run ./tests/modules/custom/refdata_pull_dvc -entry test_refdata_pull_dvc -c ./tests/config/nextflow.config -c ./tests/modules/custom/refdata_pull_dvc/nextflow.config
+  tags:
+    - refdata_pull_dvc
+  files:
+    - path: output/refdata/
+    - path: output/refdata/reference_data/amber/GermlineHetPon.38.vcf.gz
+    - path: output/refdata/reference_data/gene_panel/DriverGenePanel.38.tsv
+    - path: output/refdata/versions.yml

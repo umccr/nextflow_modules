@@ -54,21 +54,13 @@ linx/visualiser:
   - modules/linx/visualiser/**
   - tests/modules/linx/visualiser/**
 
-pave/filtering:
-  - modules/pave/filtering/**
-  - tests/modules/sage/filtering/**
-
 pave/germline:
   - modules/pave/germline/**
-  - tests/modules/sage/germline/**
+  - tests/modules/pave/germline/**
 
 pave/somatic:
   - modules/pave/somatic/**
   - tests/modules/pave/somatic/**
-
-purple/germline:
-  - modules/purple/germline/**
-  - tests/modules/purple/germline/**
 
 purple:
   - modules/purple/**

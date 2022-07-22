@@ -6,6 +6,10 @@ cobalt:
   - modules/cobalt/**
   - tests/modules/cobalt/**
 
+custom/extract_and_index_contig:
+  - modules/custom/extract_and_index_contig/**
+  - tests/modules/custom/extract_and_index_contig/**
+
 gpgr/linx_report:
   - modules/gpgr/linx_report/**
   - tests/modules/gpgr/linx_report/**

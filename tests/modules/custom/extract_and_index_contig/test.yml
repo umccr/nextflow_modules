@@ -1,0 +1,9 @@
+- name: extract_and_index_contig
+  command: nextflow run ./tests/modules/custom/extract_and_index_contig -entry test_extract_and_index_contig -c ./tests/config/nextflow.config -c ./tests/modules/custom/extract_and_index_contig/nextflow.config
+  tags:
+    - custom/extract_and_index_contig
+  files:
+    - path: output/extract/chrM_extracted.fa
+    - path: output/extract/chrM_extracted.fa.amb
+    - path: output/extract/versions.yml
+      md5sum: fa5b48a21f660c3b1b6d39dae4281339

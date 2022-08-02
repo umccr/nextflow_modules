@@ -34,7 +34,7 @@ process EXTRACT_AND_INDEX_CONTIG {
 
   stub:
   """
-  touch ${contig_name}_extracted.fa
+  touch ${contig_name}_extracted.fa ${contig_name}_extracted.fa.amb
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

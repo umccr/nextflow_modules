@@ -8,6 +8,7 @@ process PAVE_SOMATIC {
   tuple val(meta), path(sage_vcf)
   path ref_data_genome_dir
   val ref_data_genome_fn
+  val ref_data_genome_ver
   path sage_pon_file
   path mappability_bed
   path driver_gene_panel
@@ -30,7 +31,7 @@ process PAVE_SOMATIC {
     -Xmx${task.memory.giga}g \
     -jar "${task.ext.jarPath}" \
       -sample "${meta.get(['sample_name', 'tumor'])}" \
-      -ref_genome_version 38 \
+      -ref_genome_version "${ref_data_genome_ver}" \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
       -driver_gene_panel "${driver_gene_panel}" \

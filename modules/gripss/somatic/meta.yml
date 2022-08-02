@@ -29,6 +29,9 @@ input:
   - ref_data_genome_fn:
       type: string
       description: Reference genome filename
+  - ref_data_genome_ver:
+      type: string
+      description: Reference genome version
   - breakend_pon:
       type: file
       description: GRIDSS breakend PON file

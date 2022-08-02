@@ -4,6 +4,7 @@ process VISUALISER {
 
   input:
   tuple val(meta), path(linx)
+  val ref_data_genome_ver
   path ensembl_data_dir
 
   output:
@@ -23,7 +24,7 @@ process VISUALISER {
     com.hartwig.hmftools.linx.visualiser.SvVisualiser \
       ${args} \
       -sample "${meta.get(['sample_name', 'tumor'])}" \
-      -ref_genome_version 38 \
+      -ref_genome_version "${ref_data_genome_ver}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
       -plot_out linx_visualiser/plot \
       -data_out linx_visualiser/data \

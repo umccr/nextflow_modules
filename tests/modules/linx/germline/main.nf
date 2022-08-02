@@ -14,6 +14,7 @@ workflow test_linx_germline {
       checkIfExists: true
     ),
   ]
+  genome_ver = '38'
   linx_fragile_sites = file('./reference_data/hmftools/linx/fragile_sites_hmf.38.csv', checkIfExists: true)
   linx_lines = file('./reference_data/hmftools/linx/line_elements.38.csv', checkIfExists: true)
   hmf_ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
@@ -22,6 +23,7 @@ workflow test_linx_germline {
   // Run module
   LINX_GERMLINE(
     ch_input,
+    genome_ver,
     linx_fragile_sites,
     linx_lines,
     hmf_ensembl_data_dir,

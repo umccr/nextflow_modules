@@ -16,6 +16,7 @@ workflow test_pave_germline {
   ]
   genome_dir = file('./reference_data/genomes/', checkIfExists: true)
   genome_fn = 'hg38.fa'
+  genome_ver = '38'
   ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
   driver_gene_panel = file('./reference_data/hmftools/gene_panel/DriverGenePanel.38.tsv', checkIfExists: true)
   mappability_bed = file('./reference_data/hmftools/mappability/mappability_150.38.bed.gz', checkIfExists: true)
@@ -28,6 +29,7 @@ workflow test_pave_germline {
     ch_input,
     genome_dir,
     genome_fn,
+    genome_ver,
     sage_blacklist_bed,
     sage_blacklist_vcf,
     clinvar_vcf,

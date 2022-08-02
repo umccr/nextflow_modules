@@ -15,11 +15,13 @@ workflow test_visualiser {
       checkIfExists: true
     ),
   ]
+  genome_ver = '38'
   hmf_ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
 
   // Run module
   VISUALISER(
     ch_input,
+    genome_ver,
     hmf_ensembl_data_dir,
   )
 }

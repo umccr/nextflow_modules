@@ -44,6 +44,9 @@ input:
   - ref_data_genome_fn:
       type: string
       description: Reference genome filename
+  - ref_data_genome_ver:
+      type: string
+      description: Reference genome version
   - sage_known_hotspots_germline:
       type: file
       description: SAGE germline Known Hotspots file

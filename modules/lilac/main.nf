@@ -6,6 +6,7 @@ process LILAC {
   tuple val(meta), path(tumor_bam), path(normal_bam), path(tumour_bai), path(normal_bai), path(purple_dir)
   path ref_data_genome_dir
   val ref_data_genome_fn
+  val ref_data_genome_ver
   path lilac_resource_dir, stageAs: 'lilac_resource_dir'
 
   output:
@@ -33,7 +34,7 @@ process LILAC {
       -sample "${sample_name}" \
       ${tumor_bam_arg} \
       ${reference_bam_arg} \
-      -ref_genome_version 38 \
+      -ref_genome_version "${ref_data_genome_ver}" \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
       -resource_dir "${lilac_resource_dir}" \
       ${purple_args.replaceAll('\\n', '')} \

@@ -4,6 +4,7 @@ process LINX_SOMATIC {
 
   input:
   tuple val(meta), path(purple_dir)
+  val ref_data_genome_ver
   path fragile_sites
   path lines
   path ensembl_data_dir
@@ -26,7 +27,7 @@ process LINX_SOMATIC {
     -jar "${task.ext.jarPath}" \
       ${args} \
       -sample "${meta.get(['sample_name', 'tumor'])}" \
-      -ref_genome_version 38 \
+      -ref_genome_version "${ref_data_genome_ver}" \
       -sv_vcf "${purple_dir}/${meta.get(['sample_name', 'tumor'])}.purple.sv.vcf.gz" \
       -purple_dir "${purple_dir}" \
       -fragile_site_file "${fragile_sites}" \

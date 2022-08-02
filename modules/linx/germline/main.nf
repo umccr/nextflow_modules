@@ -4,6 +4,7 @@ process LINX_GERMLINE {
 
   input:
   tuple val(meta), path(gripss_sv)
+  val ref_data_genome_ver
   path fragile_sites
   path lines
   path ensembl_data_dir
@@ -26,7 +27,7 @@ process LINX_GERMLINE {
       ${args} \
       -sample "${meta.get(['sample_name', 'normal'])}" \
       -germline \
-      -ref_genome_version 38 \
+      -ref_genome_version "${ref_data_genome_ver}" \
       -sv_vcf "${gripss_sv}" \
       -fragile_site_file "${fragile_sites}" \
       -line_element_file "${lines}" \

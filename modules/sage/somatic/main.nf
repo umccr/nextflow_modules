@@ -6,6 +6,7 @@ process SAGE_SOMATIC {
   tuple val(meta), path(tumor_bam), path(normal_bam), path(tumor_bai), path(normal_bai)
   path ref_data_genome_dir
   val ref_data_genome_fn
+  val ref_data_genome_ver
   path sage_known_hotspots_somatic
   path sage_coding_panel_somatic
   path sage_high_confidence
@@ -30,7 +31,7 @@ process SAGE_SOMATIC {
       -reference_bam "${normal_bam}" \
       -tumor "${meta.get(['sample_name', 'tumor'])}" \
       -tumor_bam "${tumor_bam}" \
-      -ref_genome_version 38 \
+      -ref_genome_version "${ref_data_genome_ver}" \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
       -hotspots "${sage_known_hotspots_somatic}" \
       -panel_bed "${sage_coding_panel_somatic}" \

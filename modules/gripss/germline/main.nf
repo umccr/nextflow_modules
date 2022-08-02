@@ -6,6 +6,7 @@ process GRIPSS_GERMLINE {
   tuple val(meta), path(gridss_vcf)
   path ref_data_genome_dir
   val ref_data_genome_fn
+  val ref_data_genome_ver
   path breakend_pon
   path breakpoint_pon
   path known_fusions
@@ -27,6 +28,7 @@ process GRIPSS_GERMLINE {
     -jar "${task.ext.jarPath}" \
       ${args} \
       -sample "${meta.get(['sample_name', 'normal'])}" \
+      -ref_genome_version "V${ref_data_genome_ver}" \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
       -pon_sgl_file "${breakend_pon}" \
       -pon_sv_file "${breakpoint_pon}" \

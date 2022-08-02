@@ -47,6 +47,7 @@ workflow test_purple {
   ]
   genome_dir = file('./reference_data/genomes/', checkIfExists: true)
   genome_fn = 'hg38.fa'
+  genome_ver = '38'
   cobalt_gc_profile = file('./reference_data/hmftools/cobalt/GC_profile.1000bp.38.cnp', checkIfExists: true)
   sage_known_hotspots_somatic = file('./reference_data/hmftools/sage/KnownHotspots.somatic.38.vcf.gz', checkIfExists: true)
   sage_known_hotspots_germline = file('./reference_data/hmftools/sage/KnownHotspots.germline.38.vcf.gz', checkIfExists: true)
@@ -58,6 +59,7 @@ workflow test_purple {
     ch_input,
     genome_dir,
     genome_fn,
+    genome_ver,
     cobalt_gc_profile,
     sage_known_hotspots_somatic,
     sage_known_hotspots_germline,

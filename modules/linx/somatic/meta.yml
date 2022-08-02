@@ -23,6 +23,9 @@ input:
   - purple_dir:
       type: directory
       description: PURPLE output directory
+  - ref_data_genome_ver:
+      type: string
+      description: Reference genome version
   - fragile_sites:
       type: file
       description: LINX fragile sites file

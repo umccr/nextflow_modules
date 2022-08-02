@@ -20,7 +20,7 @@ input:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. ['subject_name': 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam']
   - linx:
       type: directory
       description: LINX somatic annotation output directory
@@ -33,7 +33,7 @@ output:
       type: map
       description: |
         Groovy Map containing sample information
-        e.g. [subject_name: 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam'
+        e.g. ['subject_name': 'subject', ['sample_name', 'tumor']: 'sample', ['tumor', 'bam']: 'path/to/bam']
   - visualiser_dir:
       type: directory
       description: LINX visualiser output directory

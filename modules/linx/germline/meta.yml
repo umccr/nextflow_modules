@@ -35,10 +35,6 @@ input:
   - ensembl_data_dir:
       type: directory
       description: HMF Ensembl Data Cache directory
-  - known_fusion_data:
-      type: file
-      description: HMF Known Fusions Data file
-      pattern: "*.{bedpe}"
   - driver_gene_panel:
       type: file
       description: HMF Driver Gene Panel file

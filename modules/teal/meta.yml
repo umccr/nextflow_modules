@@ -26,6 +26,14 @@ input:
       type: file
       description: Optional normal BAM file
       pattern: "*.{bam}"
+  - tumor_bai:
+      type: file
+      description: Tumor BAI file
+      pattern: "*.{bai}"
+  - normal_bai:
+      type: file
+      description: Normal BAI file
+      pattern: "*.{bai}"
   - tumor_wgs_metrics:
       type: file
       description: Optional tumor WGS metrics file

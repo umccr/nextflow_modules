@@ -3,7 +3,7 @@ process TEAL {
   container 'docker.io/scwatts/teal:1.0.1'
 
   input:
-  tuple val(meta), path(tumor_bam), path(normal_bam), path(tumor_wgs_metrics), path(normal_wgs_metrics), path(cobalt_dir), path(purple_dir)
+  tuple val(meta), path(tumor_bam), path(normal_bam), path(tumor_bai), path(normal_bai), path(tumor_wgs_metrics), path(normal_wgs_metrics), path(cobalt_dir), path(purple_dir)
 
   output:
   tuple val(meta), path('teal/'), emit: teal_dir

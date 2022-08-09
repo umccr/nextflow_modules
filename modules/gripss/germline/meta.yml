@@ -44,6 +44,10 @@ input:
       type: file
       description: HMF Known Fusions file
       pattern: "*.{bedpe}"
+  - repeat_mask_file:
+      type: file
+      description: RepeatMasker resource file (optional)
+      pattern: "*.{fa.out}"
 
 output:
   - meta:

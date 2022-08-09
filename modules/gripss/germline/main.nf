@@ -1,6 +1,6 @@
 process GRIPSS_GERMLINE {
-  //conda (params.enable_conda ? "bioconda::hmftools-gripss=2.1" : null)
-  container 'quay.io/biocontainers/hmftools-gripss:2.1--hdfd78af_0'
+  //conda (params.enable_conda ? "bioconda::hmftools-gripss=2.2" : null)
+  container 'quay.io/biocontainers/hmftools-gripss:2.2--hdfd78af_0 '
 
   input:
   tuple val(meta), path(gridss_vcf)
@@ -10,6 +10,7 @@ process GRIPSS_GERMLINE {
   path breakend_pon
   path breakpoint_pon
   path known_fusions
+  path repeat_mask_file
 
   output:
   tuple val(meta), path('*.gripss.filtered.vcf.gz'), path('*.gripss.filtered.vcf.gz.tbi'), emit: vcf_hard
@@ -21,6 +22,7 @@ process GRIPSS_GERMLINE {
 
   script:
   def args = task.ext.args ?: ''
+  def repeat_mask_file_arg = repeat_mask_file ? "-repeat_mask_file ${repeat_mask_file}" : ''
 
   """
   java \
@@ -34,6 +36,7 @@ process GRIPSS_GERMLINE {
       -pon_sv_file "${breakpoint_pon}" \
       -known_hotspot_file "${known_fusions}" \
       -vcf "${gridss_vcf}" \
+      ${repeat_mask_file_arg} \
       -output_dir ./
 
   # NOTE(SW): hard coded since there is no reliable way to obtain version information

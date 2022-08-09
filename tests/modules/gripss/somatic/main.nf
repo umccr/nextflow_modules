@@ -21,6 +21,7 @@ workflow test_gripss_somatic {
   gridss_breakend_pon = file('./reference_data/hmftools/gridss/gridss_pon_single_breakend.38.bed', checkIfExists: true)
   gridss_breakpoint_pon = file('./reference_data/hmftools/gridss/gridss_pon_breakpoint.38.bedpe', checkIfExists: true)
   gridss_known_fusions = file('./reference_data/hmftools/known_fusions/known_fusions.38.bedpe', checkIfExists: true)
+  repeat_masker_file = file('./reference_data/hmftools/repeatmasker/hg38.fa.out.gz', checkIfExists: true)
 
   // Run module
   GRIPSS_SOMATIC(
@@ -31,5 +32,6 @@ workflow test_gripss_somatic {
     gridss_breakend_pon,
     gridss_breakpoint_pon,
     gridss_known_fusions,
+    repeat_masker_file,
   )
 }

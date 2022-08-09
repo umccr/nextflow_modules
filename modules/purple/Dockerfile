@@ -12,7 +12,7 @@ USER mambauser
 
 RUN \
   micromamba install -y -n base -c bioconda -c conda-forge \
-    'hmftools-purple==3.4' \
+    'hmftools-purple==3.6' \
     bcftools && \
   micromamba clean --all --yes
 

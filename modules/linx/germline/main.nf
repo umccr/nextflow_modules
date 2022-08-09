@@ -1,6 +1,6 @@
 process LINX_GERMLINE {
-  //conda (params.enable_conda ? "bioconda::hmftools-linx=1.19" : null)
-  container 'quay.io/biocontainers/hmftools-linx:1.19--hdfd78af_0'
+  //conda (params.enable_conda ? "bioconda::hmftools-linx=1.21" : null)
+  container 'quay.io/biocontainers/hmftools-linx:1.21--hdfd78af_0'
 
   input:
   tuple val(meta), path(gripss_sv)

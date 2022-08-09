@@ -1,6 +1,6 @@
 process SAGE_GERMLINE {
-  //conda (params.enable_conda ? "bioconda::hmftools-sage=3.0.3" : null)
-  container 'quay.io/biocontainers/hmftools-sage:3.0.3--hdfd78af_0'
+  //conda (params.enable_conda ? "bioconda::hmftools-sage=3.1" : null)
+  container 'quay.io/biocontainers/hmftools-sage:3.1--hdfd78af_0 '
 
   input:
   tuple val(meta), path(tumor_bam), path(normal_bam), path(tumor_bai), path(normal_bai)

@@ -10,6 +10,7 @@ process REALIGN_READS_LILAC {
   output:
   tuple val(meta), path("*realigned.bam"), path("*realigned.bam.bai"), emit: bam
   path 'versions.yml'                                                , emit: versions
+  path 'log.txt'                                                     , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -34,6 +35,8 @@ process REALIGN_READS_LILAC {
     samtools sort -T tmp -o ${meta.id}_realigned.bam
   samtools index ${meta.id}_realigned.bam
 
+  ln -s .command.log log.txt
+
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":
       bwa: \$(echo \$(bwa 2>&1) | sed 's/^.*Version: //; s/Contact:.*\$//')
@@ -44,7 +47,7 @@ process REALIGN_READS_LILAC {
 
   stub:
   """
-  touch ${meta.id}_realigned.bam ${meta.id}_realigned.bam.bai
+  touch ${meta.id}_realigned.bam ${meta.id}_realigned.bam.bai log.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

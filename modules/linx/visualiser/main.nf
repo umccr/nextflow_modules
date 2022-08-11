@@ -32,6 +32,8 @@ process VISUALISER {
       -circos "${task.ext.path_circos}" \
       -threads "${task.cpus}"
 
+  ln -s ../../.command.log linx_visualiser/plot/log.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":

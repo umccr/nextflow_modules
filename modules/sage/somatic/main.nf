@@ -15,6 +15,7 @@ process SAGE_SOMATIC {
   output:
   tuple val(meta), path("${meta.subject_name}.sage_somatic.vcf.gz"), emit: vcf
   path 'versions.yml'                                              , emit: versions
+  path 'log_somatic.txt'                                           , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -40,6 +41,8 @@ process SAGE_SOMATIC {
       -threads "${task.cpus}" \
       -out "${meta.subject_name}.sage_somatic.vcf.gz"
 
+  ln -s .command.log log_somatic.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -49,7 +52,7 @@ process SAGE_SOMATIC {
 
   stub:
   """
-  touch "${meta.subject_name}.sage_somatic.vcf.gz"
+  touch "${meta.subject_name}.sage_somatic.vcf.gz" log_somatic.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

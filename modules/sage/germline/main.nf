@@ -15,6 +15,7 @@ process SAGE_GERMLINE {
   output:
   tuple val(meta), path("${meta.subject_name}.sage_germline.vcf.gz"), emit: vcf
   path 'versions.yml'                                               , emit: versions
+  path 'log_germline.txt'                                           , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -48,6 +49,8 @@ process SAGE_GERMLINE {
       -threads "${task.cpus}" \
       -out "${meta.subject_name}.sage_germline.vcf.gz"
 
+  ln -s .command.log log_germline.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -57,7 +60,7 @@ process SAGE_GERMLINE {
 
   stub:
   """
-  touch "${meta.subject_name}.sage_germline.vcf.gz"
+  touch "${meta.subject_name}.sage_germline.vcf.gz" log_germline.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

@@ -41,6 +41,8 @@ process LILAC {
       -threads "${task.cpus}" \
       -output_dir lilac/
 
+  ln -s ../.command.log lilac/log.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":

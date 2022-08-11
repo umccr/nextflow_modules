@@ -37,6 +37,8 @@ process TEAL {
       -threads "${task.cpus}" \
       -output_dir teal/
 
+  ln -s ../.command.log teal/log.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":

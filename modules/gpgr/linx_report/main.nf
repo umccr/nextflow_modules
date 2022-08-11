@@ -8,6 +8,7 @@ process LINX_REPORT {
   output:
   tuple val(meta), path('*_linx.html'), emit: html
   path 'versions.yml'                 , emit: versions
+  path 'log.txt'                      , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -23,6 +24,8 @@ process LINX_REPORT {
     --table ${linx_annotation}/ \
     --out ${meta.get(['sample_name', 'tumor'])}_linx.html;
 
+  ln -s .command.log log.txt
+
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":
       R: \$(R --version | head -n1 | sed 's/^R version \\([0-9.]\\+\\).\\+/\\1/')
@@ -32,7 +35,7 @@ process LINX_REPORT {
 
   stub:
   """
-  touch ${meta.get(['sample_name', 'tumor'])}_linx.html
+  touch ${meta.get(['sample_name', 'tumor'])}_linx.html log.txt
   echo -e '${task.process}:\n  stub: noversions\n' > versions.yml
   """
 }

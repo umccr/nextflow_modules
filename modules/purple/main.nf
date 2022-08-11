@@ -70,6 +70,8 @@ process PURPLE {
     exit 1;
   fi
 
+  ln -s ../.command.log purple/log.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":

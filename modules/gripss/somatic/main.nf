@@ -16,6 +16,7 @@ process GRIPSS_SOMATIC {
   tuple val(meta), path('*.gripss.filtered.vcf.gz'), path('*.gripss.filtered.vcf.gz.tbi'), emit: vcf_hard
   tuple val(meta), path('*.gripss.vcf.gz'), path('*.gripss.vcf.gz.tbi')                  , emit: vcf_soft
   path 'versions.yml'                                                                    , emit: versions
+  path 'log_somatic.txt'                                                                 , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -31,7 +32,7 @@ process GRIPSS_SOMATIC {
       ${args} \
       -sample "${meta.get(['sample_name', 'tumor'])}" \
       -reference "${meta.get(['sample_name', 'normal'])}" \
-      -ref_genome_version "V${ref_data_genome_ver}" \
+      -ref_genome_version "${ref_data_genome_ver}" \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
       -pon_sgl_file "${breakend_pon}" \
       -pon_sv_file "${breakpoint_pon}" \
@@ -39,6 +40,8 @@ process GRIPSS_SOMATIC {
       -vcf "${gridss_vcf}" \
       ${repeat_mask_file_arg} \
       -output_dir ./
+
+  ln -s .command.log log_somatic.txt
 
   # NOTE(SW): hard coded since there is no reliable way to obtain version information
   cat <<-END_VERSIONS > versions.yml
@@ -58,6 +61,7 @@ process GRIPSS_SOMATIC {
   touch ${meta.get(['sample_name', 'tumor'])}.gripss.filtered.vcf.gz.tbi
   touch ${meta.get(['sample_name', 'tumor'])}.gripss.vcf.gz
   touch ${meta.get(['sample_name', 'tumor'])}.gripss.vcf.gz.tbi
+  touch log_somatic.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

@@ -36,6 +36,8 @@ process LINX_GERMLINE {
       -driver_gene_panel "${driver_gene_panel}" \
       -output_dir linx_germline/
 
+  ln -s ../.command.log linx_germline/log.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":

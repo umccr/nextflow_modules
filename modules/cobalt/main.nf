@@ -29,6 +29,8 @@ process COBALT {
       -threads "${task.cpus}" \
       -gc_profile "${gc_profile}"
 
+  ln -s ../.command.log cobalt/log.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":

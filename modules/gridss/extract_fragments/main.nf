@@ -8,6 +8,7 @@ process EXTRACT_FRAGMENTS {
   output:
   tuple val(meta), path("${output_fp}"), emit: bam
   path 'versions.yml'                  , emit: versions
+  path 'log_extract_fragments'         , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -32,6 +33,8 @@ process EXTRACT_FRAGMENTS {
     exit 1;
   fi;
 
+  ln -s \$(find "gridss_extract_fragments/work/" -name 'gridss*log' -type f) log_extract_fragments.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information, see GH issue
   # https://github.com/PapenfussLab/gridss/issues/586
   cat <<-END_VERSIONS > versions.yml
@@ -45,7 +48,7 @@ process EXTRACT_FRAGMENTS {
 
   """
   mkdir -p gridss_extract_fragments/
-  touch "${output_fp}"
+  touch "${output_fp}" log_extract_fragments.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

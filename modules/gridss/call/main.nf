@@ -12,6 +12,7 @@ process CALL {
   output:
   tuple val(meta), path('gridss_call/sv_vcf.vcf.gz'), emit: vcf
   path 'versions.yml'                               , emit: versions
+  path 'log_call.txt'                               , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -65,6 +66,8 @@ process CALL {
     ${config_arg} \
     ${bams_arg}
 
+  ln -s \$(find "${output_dirname}/work/" -name 'gridss*log' -type f) log_call.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information, see GH issue
   # https://github.com/PapenfussLab/gridss/issues/586
   cat <<-END_VERSIONS > versions.yml
@@ -76,6 +79,7 @@ process CALL {
   stub:
   """
   mkdir -p gridss_call/
+  touch log_call.txt
   cat <<EOF > gridss_call/sv_vcf.vcf.gz
   ##fileformat=VCFv4.1
   ##contig=<ID=.>

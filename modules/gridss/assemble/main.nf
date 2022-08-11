@@ -12,6 +12,7 @@ process ASSEMBLE {
   output:
   tuple val(meta), path('gridss_assemble/'), emit: assemble_dir
   path 'versions.yml'                      , emit: versions
+  path 'log_assemble.txt'                  , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -66,6 +67,8 @@ process ASSEMBLE {
     ${config_arg} \
     ${bams_arg}
 
+  ln -s \$(find "${output_dirname}/work/" -name 'gridss*log' -type f) log_assemble.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information, see GH issue
   # https://github.com/PapenfussLab/gridss/issues/586
   cat <<-END_VERSIONS > versions.yml
@@ -76,7 +79,7 @@ process ASSEMBLE {
 
   stub:
   """
-  mkdir -p gridss_assemble/
+  mkdir -p gridss_assemble/ log_assemble.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

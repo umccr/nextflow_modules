@@ -22,7 +22,7 @@ process SAMBAMBA_SLICE {
     ${bed_arg} \
     --output-filename "${bam.simpleName}.sliced.bam" \
     ${bam} \
-    ${regions_arg} \
+    ${regions_arg}
 
   sambamba index "${bam.simpleName}.sliced.bam"
 

@@ -18,6 +18,7 @@ process PAVE_SOMATIC {
   tuple val(meta), path("*.vcf.gz")    , emit: vcf
   tuple val(meta), path("*.vcf.gz.tbi"), emit: index
   path 'versions.yml'                  , emit: versions
+  path 'log_somatic.txt'               , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -42,6 +43,8 @@ process PAVE_SOMATIC {
       -read_pass_only \
       -output_dir ./
 
+  ln -s .command.log log_somatic.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -51,7 +54,7 @@ process PAVE_SOMATIC {
 
   stub:
   """
-  touch ${meta.get(['sample_name', 'tumor'])}.sage.pave_somatic.vcf.gz{,.tbi}
+  touch ${meta.get(['sample_name', 'tumor'])}.sage.pave_somatic.vcf.gz{,.tbi} log_somatic.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

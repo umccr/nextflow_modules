@@ -9,6 +9,7 @@ process ANNOTATE {
   tuple val(meta), path('gridss_annotate/*.gridss.annotated.vcf.gz'), emit: vcf
   path('gridss_annotate/*.gridss.annotated.vcf.gz*')                , emit: vcf_and_index
   path 'versions.yml'                                               , emit: versions
+  path 'log_annotate.txt'                                           , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -25,6 +26,8 @@ process ANNOTATE {
     --threads "${task.cpus}" \
     "${gridss_vcf}"
 
+  ln -s \$(find "${output_dirname}/work/" -name 'gridss*log' -type f) log_annotate.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information, see GH issue
   # https://github.com/PapenfussLab/gridss/issues/586
   cat <<-END_VERSIONS > versions.yml
@@ -36,7 +39,7 @@ process ANNOTATE {
   stub:
   """
   mkdir -p gridss_annotate/
-  touch gridss_annotate/${meta.id}.gridss.annotated.vcf.gz
+  touch gridss_annotate/${meta.id}.gridss.annotated.vcf.gz log_annotate.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

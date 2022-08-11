@@ -30,6 +30,8 @@ process AMBER {
       -threads "${task.cpus}" \
       -loci "${loci}"
 
+  ln -s ../.command.log amber/log.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information.
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":

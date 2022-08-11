@@ -39,6 +39,8 @@ process LINX_SOMATIC {
       -driver_gene_panel "${driver_gene_panel}" \
       -output_dir linx_somatic/
 
+  ln -s ../.command.log linx_somatic/log.txt
+
   # NOTE(SW): hard coded since there is no reliable way to obtain version information
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":

@@ -11,6 +11,7 @@ process EXTRACT_AND_INDEX_CONTIG {
   path "*extracted.fa"  , emit: contig
   path "*extracted.fa.*", emit: bwa_indices
   path 'versions.yml'   , emit: versions
+  path 'log.txt'        , emit: log
 
   when:
   task.ext.when == null || task.ext.when
@@ -25,6 +26,8 @@ process EXTRACT_AND_INDEX_CONTIG {
     ${contig_name}
   bwa index ${contig_name}_extracted.fa
 
+  ln -s .command.log log.txt
+
   cat <<-END_VERSIONS > versions.yml
     "${task.process}":
       bwa: \$(echo \$(bwa 2>&1) | sed 's/^.*Version: //; s/Contact:.*\$//')
@@ -34,7 +37,7 @@ process EXTRACT_AND_INDEX_CONTIG {
 
   stub:
   """
-  touch ${contig_name}_extracted.fa ${contig_name}_extracted.fa.amb
+  touch ${contig_name}_extracted.fa ${contig_name}_extracted.fa.amb log.txt
   echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
   """
 }

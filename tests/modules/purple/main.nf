@@ -53,6 +53,7 @@ workflow test_purple {
   sage_known_hotspots_germline = file('./reference_data/hmftools/sage/KnownHotspots.germline.38.vcf.gz', checkIfExists: true)
   driver_gene_panel = file('./reference_data/hmftools/gene_panel/DriverGenePanel.38.tsv', checkIfExists: true)
   ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
+  germline_del_freq = file('./reference_data/hmftools/purple/cohort_germline_del_freq.38.csv', checkIfExists: true)
 
   // Run module
   PURPLE(
@@ -65,5 +66,6 @@ workflow test_purple {
     sage_known_hotspots_germline,
     driver_gene_panel,
     ensembl_data_dir,
+    germline_del_freq,
   )
 }

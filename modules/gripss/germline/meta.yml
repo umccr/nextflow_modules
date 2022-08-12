@@ -35,11 +35,11 @@ input:
   - breakend_pon:
       type: file
       description: GRIDSS breakend PON file
-      pattern: "*.{bed}"
+      pattern: "*.{bed.gz}"
   - breakpoint_pon:
       type: file
       description: GRIDSS breakpoint PON file
-      pattern: "*.{bedpe}"
+      pattern: "*.{bedpe.gz}"
   - known_fusions:
       type: file
       description: HMF Known Fusions file
@@ -47,7 +47,7 @@ input:
   - repeat_mask_file:
       type: file
       description: RepeatMasker resource file (optional)
-      pattern: "*.{fa.out}"
+      pattern: "*.{fa.out.gz}"
 
 output:
   - meta:

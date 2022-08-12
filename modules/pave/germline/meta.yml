@@ -50,7 +50,7 @@ input:
   - mappability_bed:
       type: file
       description: HMF mappability BED
-      pattern: "*.{bed}"
+      pattern: "*.{bed.gz}"
   - driver_gene_panel:
       type: file
       description: HMF Driver Gene Panel file

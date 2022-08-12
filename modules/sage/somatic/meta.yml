@@ -51,9 +51,9 @@ input:
       type: file
       description: SAGE somatic Known Hotspots file
       pattern: "*.{vcf.gz}"
-  - sage_coding_panel_somatic:
+  - sage_coding_panel:
       type: file
-      description: SAGE somatic Coding Panel file
+      description: SAGE Coding Panel file
       pattern: "*.{bed.gz}"
   - sage_high_confidence:
       type: file

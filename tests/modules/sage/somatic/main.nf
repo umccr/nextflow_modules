@@ -32,7 +32,7 @@ workflow test_sage_somatic {
   genome_fn = 'hg38.fa'
   genome_ver = '38'
   sage_known_hotspots_somatic = file('./reference_data/hmftools/sage/KnownHotspots.somatic.38.vcf.gz', checkIfExists: true)
-  sage_coding_panel_somatic = file('./reference_data/hmftools/sage/ActionableCodingPanel.somatic.38.bed.gz', checkIfExists: true)
+  sage_coding_panel = file('./reference_data/hmftools/sage/ActionableCodingPanel.38.bed.gz', checkIfExists: true)
   sage_high_confidence = file('./reference_data/hmftools/sage/HG001_GRCh38_GIAB_highconf_CG-IllFB-IllGATKHC-Ion-10X-SOLID_CHROM1-X_v.3.3.2_highconf_nosomaticdel_noCENorHET7.bed.gz', checkIfExists: true)
   ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
 
@@ -43,7 +43,7 @@ workflow test_sage_somatic {
     genome_fn,
     genome_ver,
     sage_known_hotspots_somatic,
-    sage_coding_panel_somatic,
+    sage_coding_panel,
     sage_high_confidence,
     ensembl_data_dir,
   )

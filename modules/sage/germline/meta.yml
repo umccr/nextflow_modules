@@ -51,9 +51,9 @@ input:
       type: file
       description: SAGE germline Known Hotspots file
       pattern: "*.{vcf.gz}"
-  - sage_coding_panel_germline:
+  - sage_coding_panel:
       type: file
-      description: SAGE germline Coding Panel file
+      description: SAGE Coding Panel file
       pattern: "*.{bed.gz}"
   - sage_high_confidence:
       type: file

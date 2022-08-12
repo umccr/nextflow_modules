@@ -8,7 +8,7 @@ process SAGE_GERMLINE {
   val ref_data_genome_fn
   val ref_data_genome_ver
   path sage_known_hotspots_germline
-  path sage_coding_panel_germline
+  path sage_coding_panel
   path sage_high_confidence
   path ensembl_data_dir
 
@@ -34,7 +34,7 @@ process SAGE_GERMLINE {
       -ref_genome_version "${ref_data_genome_ver}" \
       -ref_genome "${ref_data_genome_dir}/${ref_data_genome_fn}" \
       -hotspots "${sage_known_hotspots_germline}" \
-      -panel_bed "${sage_coding_panel_germline}" \
+      -panel_bed "${sage_coding_panel}" \
       -high_confidence_bed "${sage_high_confidence}" \
       -ensembl_data_dir "${ensembl_data_dir}" \
       -hotspot_min_tumor_qual 50 \

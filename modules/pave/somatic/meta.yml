@@ -38,11 +38,11 @@ input:
   - sage_pon_file:
       type: file
       description: SAGE PON file
-      pattern: "*.{vcf.gz}"
+      pattern: "*.{tsv.gz}"
   - mappability_bed:
       type: file
       description: HMF mappability BED
-      pattern: "*.{bed}"
+      pattern: "*.{bed.gz}"
   - driver_gene_panel:
       type: file
       description: HMF Driver Gene Panel file

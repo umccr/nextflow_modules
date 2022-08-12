@@ -20,7 +20,7 @@ workflow test_pave_somatic {
   ensembl_data_dir = file('./reference_data/hmftools/ensembl_data_cache/', checkIfExists: true)
   driver_gene_panel = file('./reference_data/hmftools/gene_panel/DriverGenePanel.38.tsv', checkIfExists: true)
   mappability_bed = file('./reference_data/hmftools/mappability/mappability_150.38.bed.gz', checkIfExists: true)
-  sage_pon_file = file('./reference_data/hmftools/sage/SageGermlinePon.98x.38.vcf.gz', checkIfExists: true)
+  sage_pon_file = file('./reference_data/hmftools/sage/SageGermlinePon.98x.38.tsv.gz', checkIfExists: true)
 
   // Run module
   PAVE_SOMATIC(

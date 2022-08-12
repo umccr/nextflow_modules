@@ -80,7 +80,10 @@ input:
   - ensembl_data_dir:
       type: directory
       description: HMF Ensembl Data Cache directory
-
+  - germline_del_freq:
+      type: file
+      description: Cohort frequency for germline deletions
+      pattern: "*.{csv}"
 
 output:
   - meta:

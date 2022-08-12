@@ -41,7 +41,7 @@ input:
   - blacklist:
       type: file
       description: GRIDSS blacklist file
-      pattern: "*.{bed}"
+      pattern: "*.{bed.gz}"
 
 output:
   - meta:

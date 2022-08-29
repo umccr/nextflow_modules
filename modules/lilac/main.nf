@@ -1,6 +1,6 @@
 process LILAC {
   //conda (params.enable_conda ? "bioconda::hmftools-lilac=1.2" : null)
-  container 'docker.io/scwatts/lilac:1.2'
+  container 'docker.io/scwatts/lilac:1.2--1'
 
   input:
   tuple val(meta), path(tumor_bam), path(normal_bam), path(tumour_bai), path(normal_bai), path(purple_dir)

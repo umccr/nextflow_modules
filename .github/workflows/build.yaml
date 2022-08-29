@@ -1,0 +1,93 @@
+name: build
+on:
+  push:
+    tags:
+      - '**-*--*'
+
+jobs:
+  initialise:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set environment
+        id: set_environment
+        run: |
+          tag=${GITHUB_REF#refs/tags/}
+          version=$(sed 's/^.\+-\([0-9.]\+--[0-9]\+\)$/\1/' <<< ${tag})
+          module_name=$(sed 's/-'${version}'$//' <<< ${tag})
+          dockerfile="modules/${module_name}/Dockerfile"
+          docker_tag=$(sed 's#/#-#g' <<< "${module_name}:${version}")
+
+          echo "::set-output name=docker_tag::${docker_tag}"
+          echo "::set-output name=dockerfile::${dockerfile}"
+          if [[ -e "${dockerfile}" ]]; then
+            echo "::set-output name=proceed::true"
+          else
+            echo "::set-output name=proceed::false"
+          fi;
+
+    outputs:
+      proceed: ${{ steps.set_environment.outputs.proceed }}
+      docker_tag: ${{ steps.set_environment.outputs.docker_tag }}
+      dockerfile: ${{ steps.set_environment.outputs.dockerfile }}
+
+  build:
+    runs-on: ubuntu-latest
+    needs: initialise
+    if: needs.initialise.outputs.proceed == 'true'
+    env:
+      DOCKERHUB_REPO: 'docker.io/scwatts'
+      DOCKERFILE: ${{ needs.initialise.outputs.dockerfile }}
+      DOCKER_TAG: ${{ needs.initialise.outputs.docker_tag }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            --tag "${DOCKERHUB_REPO}/${DOCKER_TAG}" \
+            --file ${DOCKERFILE} \
+            ./
+
+      - name: DockerHub Auth
+        run: |
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | \
+            docker login \
+              --username "${{ secrets.DOCKERHUB_USERNAME }}" \
+              --password-stdin
+
+      - name: Upload Docker image
+        run: |
+          docker push "${DOCKERHUB_REPO}/${DOCKER_TAG}"
+
+# NOTE(SW): working change detection + job matrix previously intended to avoid
+# rebuilding when no change existed in Dockerfiles between tags
+#jobs:
+#  changes:
+#    name: Check for changes
+#    runs-on: ubuntu-latest
+#    outputs:
+#      dockerfiles: ${{ steps.filter.outputs.dockerfiles_files }}
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: dorny/paths-filter@v2
+#        id: filter
+#        with:
+#          list-files: json
+#          filters: |
+#            dockerfiles: 'modules/**/Dockerfile'
+#
+#  build:
+#    name: build-${{ matrix.files }}
+#    runs-on: ubuntu-latest
+#    needs: changes
+#    if: needs.changes.outputs.dockerfiles != '[]'
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        files: ${{ fromJson(needs.changes.outputs.dockerfiles) }}
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: dev_step
+#        run: |
+#          echo ${{ matrix.files }}

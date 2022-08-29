@@ -1,6 +1,6 @@
 process COBALT {
   //conda (params.enable_conda ? "bioconda::hmftools-cobalt=1.13" : null)
-  container 'docker.io/scwatts/cobalt:1.13'
+  container 'docker.io/scwatts/cobalt:1.13--0'
 
   input:
   tuple val(meta), path(tumor_bam), path(normal_bam), path(tumor_bai), path(normal_bai)

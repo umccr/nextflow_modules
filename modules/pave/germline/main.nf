@@ -2,7 +2,7 @@
 
 process PAVE_GERMLINE {
   //conda (params.enable_conda ? "bioconda::hmftools-pave=1.3" : null)
-  container 'docker.io/scwatts/pave:1.3'
+  container 'docker.io/scwatts/pave:1.3--2'
 
   input:
   tuple val(meta), path(sage_vcf)

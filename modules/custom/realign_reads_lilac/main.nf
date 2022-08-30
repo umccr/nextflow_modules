@@ -1,6 +1,6 @@
 process REALIGN_READS_LILAC {
   //conda (params.enable_conda ? "bioconda::hmftools-lilac=1.2" : null)
-  container 'docker.io/scwatts/realign_reads_lilac:0.0.1'
+  container 'docker.io/scwatts/realign_reads_lilac:0.0.1--1'
 
   input:
   tuple val(meta), path(bam), path(bai)

@@ -1,6 +1,6 @@
 process TEAL {
   //conda (params.enable_conda ? "bioconda::hmftools-teal=1.0.1" : null)
-  container 'docker.io/scwatts/teal:1.0.1'
+  container 'docker.io/scwatts/teal:1.0.1--1'
 
   input:
   tuple val(meta), path(tumor_bam), path(normal_bam), path(tumor_bai), path(normal_bai), path(tumor_wgs_metrics), path(normal_wgs_metrics), path(cobalt_dir), path(purple_dir)

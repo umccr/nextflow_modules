@@ -1,6 +1,6 @@
 process ASSEMBLE {
   //conda (params.enable_conda ? "bioconda::gridss=2.13.2" : null)
-  container 'docker.io/scwatts/gridss:2.13.2'
+  container 'docker.io/scwatts/gridss:2.13.2--1'
 
   input:
   tuple val(meta), path(bams), path(preprocess_dirs), val(labels)

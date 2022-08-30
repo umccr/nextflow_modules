@@ -1,12 +1,10 @@
 name: build
-on:
-  push:
-    tags:
-      - '**-*--*'
+on: [push, workflow_dispatch]
 
 jobs:
   initialise:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v3
       - name: Set environment

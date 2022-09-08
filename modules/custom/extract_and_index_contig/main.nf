@@ -1,6 +1,6 @@
 process EXTRACT_AND_INDEX_CONTIG {
   //conda (params.enable_conda ? "bioconda::null" : null)
-  container 'docker.io/scwatts/extract_and_index_contig:0.0.1--1'
+  container 'docker.io/scwatts/custom-extract_and_index_contig:0.0.1--2'
 
   input:
   val contig_name

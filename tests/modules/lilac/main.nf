@@ -7,6 +7,7 @@ workflow test_lilac {
   // Set up inputs
   ch_input = [
     [
+      'subject_name': 'TEST_subject',
       ['sample_name', 'tumor']: 'SEQC-II_Tumor_50pc',
       ['sample_name', 'normal']: 'SEQC-II_Normal',
     ],

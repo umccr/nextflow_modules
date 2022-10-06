@@ -8,4 +8,4 @@
     - path: output/assemble/gridss_assemble/sv_assemblies.bam
     - path: output/assemble/gridss_assemble/work/sv_assemblies.bam.gridss.working/
     - path: output/assemble/versions.yml
-      md5sum: d68f083d9cfcb3c2533749f5e3fdfe0b
+      md5sum: a064c914a1de2eb1905d42dca73e5ddf

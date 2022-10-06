@@ -8,4 +8,4 @@
     - path: output/annotate/gridss_annotate/TEST_subject.gridss.annotated.vcf.gz
     - path: output/annotate/gridss_annotate/TEST_subject.gridss.annotated.vcf.gz.tbi
     - path: output/annotate/versions.yml
-      md5sum: 96672e684563e931d22499c7fdbb1cbb
+      md5sum: eab13722d782bf2e1c0f3a3f3faea20d

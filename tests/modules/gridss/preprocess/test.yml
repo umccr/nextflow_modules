@@ -9,4 +9,4 @@
     - path: output/preprocess/gridss_preprocess/SEQC-II_Tumor_50pc-ready.targeted.bam.gridss.working/
     - path: output/preprocess/gridss_preprocess/SEQC-II_Tumor_50pc-ready.targeted.bam.gridss.working/SEQC-II_Tumor_50pc-ready.targeted.bam.sv.bam
     - path: output/preprocess/versions.yml
-      md5sum: 32816ed1206a1d32afa5c3cbc1c5a38d
+      md5sum: 0390e87e52d125c29091162dd14b3cee

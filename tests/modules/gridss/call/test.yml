@@ -8,4 +8,4 @@
     - path: output/call/gridss_call/
     - path: output/call/gridss_call/sv_vcf.vcf.gz
     - path: output/call/versions.yml
-      md5sum: b12e5fdbc7704b6ee50f5d0a937048e6
+      md5sum: 7b4ab4076c5e1d7cf58f3ee5af14c93d

@@ -11,4 +11,4 @@
     - path: output/visualiser/linx_visualiser/plot/SEQC-II_Tumor_50pc.cluster-0.sv2.005.png
     - path: output/visualiser/linx_visualiser/plot/SEQC-II_Tumor_50pc.cluster-1.sv1.003.png
     - path: output/visualiser/versions.yml
-      md5sum: 20d05c7d041889c586ec0bf5a16cc835
+      md5sum: 5c488cd314b07163d45befc7b1cc595b

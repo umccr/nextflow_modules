@@ -1,9 +1,0 @@
-- name: realign_reads_lilac
-  command: nextflow run ./tests/modules/custom/realign_reads_lilac -entry test_realign_reads_lilac -c ./tests/config/nextflow.config -c ./tests/modules/custom/realign_reads_lilac/nextflow.config
-  tags:
-    - custom/realign_reads_lilac
-  files:
-    - path: output/realign/TEST_sample_realigned.bam
-    - path: output/realign/TEST_sample_realigned.bam.bai
-    - path: output/realign/versions.yml
-      md5sum: 9f43dd76f6bb5b29224a72e0ddeadfec

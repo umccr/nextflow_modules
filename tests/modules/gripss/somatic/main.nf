@@ -15,8 +15,8 @@ workflow test_gripss_somatic {
       checkIfExists: true
     ),
   ]
-  genome_dir = file('./reference_data/genomes/', checkIfExists: true)
-  genome_fn = 'hg38.fa'
+  genome_fa = file('./reference_data/genomes/GRCh38/hg38.fa', checkIfExists: true)
+  genome_fai = file('./reference_data/genomes/GRCh38/samtools_index/1.12/hg38.fa.fai', checkIfExists: true)
   genome_ver = '38'
   gridss_breakend_pon = file('./reference_data/hmftools/gridss/gridss_pon_single_breakend.38.bed.gz', checkIfExists: true)
   gridss_breakpoint_pon = file('./reference_data/hmftools/gridss/gridss_pon_breakpoint.38.bedpe.gz', checkIfExists: true)
@@ -26,8 +26,8 @@ workflow test_gripss_somatic {
   // Run module
   GRIPSS_SOMATIC(
     ch_input,
-    genome_dir,
-    genome_fn,
+    genome_fa,
+    genome_fai,
     genome_ver,
     gridss_breakend_pon,
     gridss_breakpoint_pon,

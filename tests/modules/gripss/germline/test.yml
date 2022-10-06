@@ -11,3 +11,4 @@
     - path: output/gripss/SEQC-II_Normal.gripss.filtered.vcf.gz.tbi
     - path: output/gripss/versions.yml
       md5sum: a0b843b21930354d1d0fabfe837264d0
+      md5sum: 78da4618139a3564ffb074e232f4e79a

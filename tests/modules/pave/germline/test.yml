@@ -9,3 +9,4 @@
     - path: output/pave/SEQC-II.sage_germline.pave.vcf.gz.tbi
     - path: output/pave/versions.yml
       md5sum: 3037d3c3770337d6f4b75a69e04b8f15
+      md5sum: 62b001c65154fa905b103995fbce3043

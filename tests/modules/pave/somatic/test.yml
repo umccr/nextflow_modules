@@ -9,3 +9,4 @@
     - path: output/pave/SEQC-II.sage_somatic.pave.vcf.gz.tbi
     - path: output/pave/versions.yml
       md5sum: 00e4b165c48d09260f3dbfba7415c9cd
+      md5sum: f2ccac5efe4482ddf7343cf1dbfd1a18

@@ -8,3 +8,4 @@
     - path: output/sage/SEQC-II.sage_germline.vcf.gz
     - path: output/sage/versions.yml
       md5sum: df7bbbda0647d72bfc648c8c1743a531
+      md5sum: 5a442d5a988e5fa1dfee12e5a3835af1

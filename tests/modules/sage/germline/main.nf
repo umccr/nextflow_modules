@@ -28,8 +28,9 @@ workflow test_sage_germline {
       checkIfExists: true
     ),
   ]
-  genome_dir = file('./reference_data/genomes/', checkIfExists: true)
-  genome_fn = 'hg38.fa'
+  genome_fa = file('./reference_data/genomes/GRCh38/hg38.fa', checkIfExists: true)
+  genome_fai = file('./reference_data/genomes/GRCh38/samtools_index/1.12/hg38.fa.fai', checkIfExists: true)
+  genome_dict = file('./reference_data/genomes/GRCh38/samtools_index/1.12/hg38.fa.dict', checkIfExists: true)
   genome_ver = '38'
   sage_known_hotspots_germline = file('./reference_data/hmftools/sage/KnownHotspots.germline.38.vcf.gz', checkIfExists: true)
   sage_coding_panel = file('./reference_data/hmftools/sage/ActionableCodingPanel.38.bed.gz', checkIfExists: true)
@@ -39,8 +40,9 @@ workflow test_sage_germline {
   // Run module
   SAGE_GERMLINE(
     ch_input,
-    genome_dir,
-    genome_fn,
+    genome_fa,
+    genome_fai,
+    genome_dict,
     genome_ver,
     sage_known_hotspots_germline,
     sage_coding_panel,

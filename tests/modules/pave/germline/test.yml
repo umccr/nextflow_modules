@@ -4,9 +4,8 @@
     - pave/germline
     - pave
   files:
-    - path: output/pave/
-    - path: output/pave/SEQC-II.sage_germline.pave.vcf.gz
-    - path: output/pave/SEQC-II.sage_germline.pave.vcf.gz.tbi
-    - path: output/pave/versions.yml
-      md5sum: 3037d3c3770337d6f4b75a69e04b8f15
+    - path: output/pave_germline/
+    - path: output/pave_germline/SEQC-II.sage_germline.pave.vcf.gz
+    - path: output/pave_germline/SEQC-II.sage_germline.pave.vcf.gz.tbi
+    - path: output/pave_germline/versions.yml
       md5sum: 62b001c65154fa905b103995fbce3043

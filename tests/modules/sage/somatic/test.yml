@@ -4,8 +4,7 @@
     - sage/somatic
     - sage
   files:
-    - path: output/sage/
-    - path: output/sage/SEQC-II.sage_somatic.vcf.gz
-    - path: output/sage/versions.yml
-      md5sum: ad9e1d5d5d56a99502aaea36c13c470d
+    - path: output/sage_somatic/
+    - path: output/sage_somatic/SEQC-II.sage_somatic.vcf.gz
+    - path: output/sage_somatic/versions.yml
       md5sum: 587a7a801fcb0c7e53febb7627fb8443

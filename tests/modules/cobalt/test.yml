@@ -6,4 +6,4 @@
     - path: output/cobalt/
     - path: output/cobalt/cobalt/cobalt.version
     - path: output/cobalt/versions.yml
-      md5sum: 2f64c117d4d3093e4ec0d6e3e84b66d4
+      md5sum: f3bbb705ce78e71cf28cb561b2b96678

@@ -4,11 +4,10 @@
     - gripss/germline
     - gripss
   files:
-    - path: output/gripss/
-    - path: output/gripss/SEQC-II_Normal.gripss.vcf.gz
-    - path: output/gripss/SEQC-II_Normal.gripss.vcf.gz.tbi
-    - path: output/gripss/SEQC-II_Normal.gripss.filtered.vcf.gz
-    - path: output/gripss/SEQC-II_Normal.gripss.filtered.vcf.gz.tbi
-    - path: output/gripss/versions.yml
-      md5sum: a0b843b21930354d1d0fabfe837264d0
+    - path: output/gripss_germline/
+    - path: output/gripss_germline/SEQC-II_Normal.gripss.vcf.gz
+    - path: output/gripss_germline/SEQC-II_Normal.gripss.vcf.gz.tbi
+    - path: output/gripss_germline/SEQC-II_Normal.gripss.filtered.vcf.gz
+    - path: output/gripss_germline/SEQC-II_Normal.gripss.filtered.vcf.gz.tbi
+    - path: output/gripss_germline/versions.yml
       md5sum: 78da4618139a3564ffb074e232f4e79a

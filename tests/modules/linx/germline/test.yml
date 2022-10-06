@@ -4,9 +4,8 @@
     - linx/germline
     - linx
   files:
-    - path: output/linx/
-    - path: output/linx/linx_germline/
-    - path: output/linx/linx_germline/linx.version
-    - path: output/linx/versions.yml
-      md5sum: d744548878874f3e02b52afe6c48ee60
+    - path: output/linx_germline/
+    - path: output/linx_germline/linx_germline/
+    - path: output/linx_germline/linx_germline/linx.version
+    - path: output/linx_germline/versions.yml
       md5sum: 9dd6aed439d74cdb617241c67e5488a8

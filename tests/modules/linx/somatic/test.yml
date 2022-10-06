@@ -4,9 +4,8 @@
     - linx/somatic
     - linx
   files:
-    - path: output/linx/
-    - path: output/linx/linx_somatic/
-    - path: output/linx/linx_somatic/linx.version
-    - path: output/linx/versions.yml
-      md5sum: 52c7e98198abdd463770fd4864f7dcb9
+    - path: output/linx_somatic/
+    - path: output/linx_somatic/linx_somatic/
+    - path: output/linx_somatic/linx_somatic/linx.version
+    - path: output/linx_somatic/versions.yml
       md5sum: 65bb47c865b9db75051dfeea34985c7e

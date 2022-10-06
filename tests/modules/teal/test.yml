@@ -7,4 +7,4 @@
     - path: output/teal/teal/SEQC-II_Normal.teal.telbam.bam
     - path: output/teal/teal/SEQC-II_Tumor_50pc.teal.telbam.bam
     - path: output/teal/versions.yml
-      md5sum: 83bef4fdd8d49100f1edf629f6f0bff3
+      md5sum: 6ca7e58705697dd887d34cb79b38e447

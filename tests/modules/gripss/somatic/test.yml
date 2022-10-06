@@ -4,11 +4,10 @@
     - gripss/somatic
     - gripss
   files:
-    - path: output/gripss/
-    - path: output/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz
-    - path: output/gripss/SEQC-II_Tumor_50pc.gripss.vcf.gz.tbi
-    - path: output/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz
-    - path: output/gripss/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz.tbi
-    - path: output/gripss/versions.yml
-      md5sum: c0bb102ab2fd8c06b1f6699ec052ab98
+    - path: output/gripss_somatic/
+    - path: output/gripss_somatic/SEQC-II_Tumor_50pc.gripss.vcf.gz
+    - path: output/gripss_somatic/SEQC-II_Tumor_50pc.gripss.vcf.gz.tbi
+    - path: output/gripss_somatic/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz
+    - path: output/gripss_somatic/SEQC-II_Tumor_50pc.gripss.filtered.vcf.gz.tbi
+    - path: output/gripss_somatic/versions.yml
       md5sum: 6b9fa886baaa03b9d87374c6dee006d6

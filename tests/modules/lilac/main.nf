@@ -32,16 +32,14 @@ workflow test_lilac {
       checkIfExists: true
     ),
   ]
-  genome_dir = file('./reference_data/genomes/', checkIfExists: true)
-  genome_fn = 'hg38.fa'
+  genome_fa = file('./reference_data/genomes/GRCh38/hg38.fa', checkIfExists: true)
   genome_ver = '38'
   lilac_resource_dir = file('./reference_data/hmftools/lilac/', checkIfExists: true)
 
   // Run module
   LILAC(
     ch_input,
-    genome_dir,
-    genome_fn,
+    genome_fa,
     genome_ver,
     lilac_resource_dir,
   )

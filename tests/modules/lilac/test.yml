@@ -4,7 +4,7 @@
     - lilac
   files:
     - path: output/lilac/
-    - path: output/lilac/lilac/TEST_subject.lilac.csv
-    - path: output/lilac/lilac/TEST_subject.lilac.qc.csv
+    - path: output/lilac/lilac/SEQC-II_Tumor_50pc.lilac.csv
+    - path: output/lilac/lilac/SEQC-II_Tumor_50pc.lilac.qc.csv
     - path: output/lilac/versions.yml
-      md5sum: cd18309c76560a9e4e3df7e54fece8ed
+      md5sum: 20ecbb64568541b2ce754418d751583f
